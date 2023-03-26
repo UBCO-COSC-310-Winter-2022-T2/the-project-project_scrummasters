@@ -1,0 +1,17 @@
+{
+    "name": "usuario/the-project-project_scrummasters",
+    "require": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Usuario\\TheProjectProjectScrummasters\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Gerard Escolano",
+            "email": "gerard02@student.ubc.ca"
+        }
+    ]
+}
