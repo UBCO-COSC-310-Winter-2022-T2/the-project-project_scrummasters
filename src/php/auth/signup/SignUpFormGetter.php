@@ -1,5 +1,5 @@
 <?php
-namespace Shaheershoaib\TheProjectProjectScrummasters\php\auth\signup;
+
 
 class SignUpFormGetter
 {

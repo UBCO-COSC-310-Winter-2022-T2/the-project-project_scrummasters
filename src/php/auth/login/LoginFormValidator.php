@@ -1,8 +1,7 @@
 <?php
 
 
-namespace Shaheershoaib\TheProjectProjectScrummasters\php\auth\login;
-use Shaheershoaib\TheProjectProjectScrummasters\php\db\dbConnection;
+
 require_once('../../db/dbConnection.php');
 
 class LoginFormValidator

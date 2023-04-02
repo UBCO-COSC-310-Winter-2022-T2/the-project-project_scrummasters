@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Shaheershoaib\TheProjectProjectScrummasters\php\db;
+
 
 class dbConnection
 {

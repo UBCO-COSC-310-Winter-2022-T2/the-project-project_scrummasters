@@ -1,8 +1,6 @@
 <?php
 
 
-use Shaheershoaib\TheProjectProjectScrummasters\php\auth\signup\SignUpFormGetter;
-use Shaheershoaib\TheProjectProjectScrummasters\php\auth\signup\SignUpFormInserter;
 
 
 if($_SERVER["REQUEST_METHOD"] == "POST")

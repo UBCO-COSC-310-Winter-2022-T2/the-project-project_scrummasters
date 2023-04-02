@@ -1,5 +1,4 @@
 <?php
-namespace Shaheershoaib\TheProjectProjectScrummasters\php\auth\login;
 
 class LoginFormGetter
 {
