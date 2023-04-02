@@ -1,1 +1,1 @@
-{"version":1,"defects":{"phpUnitTest::testSimpleFalse":7},"times":{"phpUnitTest::testSimpleTrue":0.001,"phpUnitTest::testSimpleFalse":0.008}}
+{"version":1,"defects":{"phpUnitTest::testSimpleFalse":7},"times":{"phpUnitTest::testSimpleTrue":0.003,"phpUnitTest::testSimpleFalse":0.008}}

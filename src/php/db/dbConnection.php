@@ -1,8 +1,6 @@
 <?php
 
 
-
-
 class dbConnection
 {
 
@@ -16,8 +14,8 @@ class dbConnection
     {
         $this->host = "localhost";
         $this->database = "discord";
-        $this->user = "webuser";
-        $this->password = "P@ssw0rd";
+        $this->user = "root";
+        $this->password = "";
 
         $this->connection = mysqli_connect($this->host, $this->user, $this->password, $this->database);
         if (mysqli_connect_errno()) {
