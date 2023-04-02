@@ -9,6 +9,7 @@ html, body {
 
 
 .auth-form {
+    position: fixed;
     border: 4px solid black;
     border-radius: 1em;
     padding: 2em;
@@ -19,6 +20,10 @@ button{
     width: 100%;
     background-color: #5965f2;
     color: white;
+}
+
+button:hover{
+    cursor: pointer;
 }
 
 .input-field{
