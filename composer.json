@@ -1,0 +1,17 @@
+{
+    "name": "shaheershoaib/the-project-project_scrummasters",
+    "require": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shaheershoaib\\TheProjectProjectScrummasters\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Shaheer",
+            "email": "shaheershoaib11@gmail.com"
+        }
+    ]
+}

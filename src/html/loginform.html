@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+
+<div class = "auth-form">
+<h1 class = "auth-form-title"> Log In</h1>
+
+
+<form method = "post" action = "../php/auth/login/login.php">
+    <div class = "input-field">
+  <label>Username: </label>
+        <br>
+  <input type = "text" name = "username" placeholder = "Enter your username here" required>
+    </div>
+
+    <div class = "input-field">
+  <label>Password: </label>
+        <br>
+  <input type = "password" name = "password" placeholder = "Enter your password here" required>
+    </div>
+  <button>Submit</button>
+</form>
+</div>
+
+</body>
+</html>
