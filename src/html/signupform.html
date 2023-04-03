@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="../css/auth.css">
+
+
+
+</head>
+<body>
+
+<div class = "auth-form">
+  <h1 class = "auth-form-title"> Sign Up</h1>
+
+
+  <form method = "post" action = "../php/auth/signup/signup.php" id = "signup-form">
+    <div class = "input-field">
+      <label>First Name: </label>
+      <br>
+      <input type = "text" name = "firstName" placeholder = "Enter your first name here" required>
+    </div>
+
+
+    <div class = "input-field">
+      <label>Last Name: </label>
+      <br>
+      <input type = "text" name = "lastName" placeholder = "Enter your last name here" required>
+    </div>
+
+    <div class = "input-field">
+      <label>Email: </label>
+      <br>
+      <input type = "email" name = "email" placeholder = "Enter your email here" required>
+    </div>
+
+    <div class = "input-field">
+      <label>Phone Number: </label>
+      <br>
+      <input type = "tel" name = "phoneNumber" placeholder = "Enter your number here" required>
+    </div>
+
+
+    <div class = "input-field">
+      <label>Username: </label>
+      <br>
+      <input type = "text" name = "username" placeholder = "Enter your username here" required>
+    </div>
+
+    <div class = "input-field">
+      <label>Password: </label>
+      <br>
+      <input id = "password" type = "password" name = "password" placeholder = "Enter your password here" required>
+    </div>
+
+    <div class = "input-field">
+      <label>Confirm Password: </label>
+      <br>
+      <input id = "confirm-password" type = "password" placeholder = "Enter your username here" required>
+    </div>
+
+    <button>Submit</button>
+  </form>
+</div>
+
+<script>
+  function checkIfPasswordsMatch(e) {
+    let password = document.getElementById("password");
+    let confirmPassword = document.getElementById("confirm-password");
+    if(password.value != confirmPassword.value) {
+      alert("Passwords Don't Match. Please try again.")
+      password.style.backgroundColor = "red";
+      confirmPassword.style.backgroundColor = "red";
+      e.preventDefault();
+    }
+  }
+
+  var submitForm= document.getElementById("signup-form");
+  submitForm.addEventListener("submit", checkIfPasswordsMatch);
+
+</script>
+
+</body>
+</html>
