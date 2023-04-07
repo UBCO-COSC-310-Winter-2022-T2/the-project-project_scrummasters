@@ -1,8 +1,13 @@
 <?php
 
 
+if($_POST['test'] = 'testing'){
+    require_once('../db/dbConnection.php');
+}
+else{
+    require_once('../../db/dbConnection.php');
+}
 
-require_once('../../db/dbConnection.php');
 
 class SignUpFormInserter
 {
