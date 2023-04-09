@@ -68,10 +68,7 @@ class phpUnitTest extends TestCase
         self::assertTrue($bool);
     }
 
-    public function testRegistrationExisting(){
-        //create and delete
-        $_POST['username'] = 'gerry';
-    }
+
     public function testSimpleTrue()
     {
         $this->assertTrue(true);
