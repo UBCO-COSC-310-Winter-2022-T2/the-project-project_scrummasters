@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+<?php session_start() ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Log In</title>
-    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../../css/auth.css">
+    <link rel="stylesheet" href="../../css/buttons.css">
 </head>
 <body>
 
@@ -11,7 +13,15 @@
 <h1 class = "auth-form-title"> Log In</h1>
 
 
-<form method = "post" action = "../php/auth/login/login.php">
+<form method = "post" action = "../auth/login/login.php">
+    <?php
+    session_start();
+    if(!empty($_SESSION["login_err"]))
+    {
+        echo $_SESSION["login_err"];
+        unset($_SESSION["login_err"]);
+    }
+    ?>
     <div class = "input-field">
   <label>Username: </label>
         <br>
@@ -23,7 +33,7 @@
         <br>
   <input type = "password" name = "password" placeholder = "Enter your password here" required>
     </div>
-  <button>Submit</button>
+  <button>Log In</button>
 </form>
 </div>
 

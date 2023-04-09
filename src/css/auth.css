@@ -18,13 +18,9 @@ html, body {
 
 button{
     width: 100%;
-    background-color: #5965f2;
-    color: white;
 }
 
-button:hover{
-    cursor: pointer;
-}
+
 
 .input-field{
     margin: 40px 40px;

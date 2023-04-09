@@ -1,0 +1,42 @@
+html, body{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #5965f2;
+
+}
+
+
+.buttons{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+button{
+    width: 20em;
+    height: 3em;
+}
+
+
+h1, h2, h3{
+    text-align: center;
+    color: white;
+}
+
+h1{
+    font-size: 100px;
+}
+
+h2{
+    font-size: 75px;
+}
+
+h3{
+    font-size: 50px;
+}
+
+
+

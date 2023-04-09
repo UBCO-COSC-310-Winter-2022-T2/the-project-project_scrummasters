@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+<?php session_start() ?>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Sign Up</title>
-  <link rel="stylesheet" href="../css/auth.css">
-
+  <link rel="stylesheet" href="../../css/auth.css">
+  <link rel="stylesheet" href="../../css/buttons.css">
 
 
 </head>
@@ -14,7 +15,7 @@
   <h1 class = "auth-form-title"> Sign Up</h1>
 
 
-  <form method = "post" action = "../php/auth/signup/signup.php" id = "signup-form">
+  <form method = "post" action = "../auth/signup/signup.php" id = "signup-form">
     <div class = "input-field">
       <label>First Name: </label>
       <br>
@@ -31,12 +32,27 @@
     <div class = "input-field">
       <label>Email: </label>
       <br>
-      <input type = "email" name = "email" placeholder = "Enter your email here" required>
+        <?php
+        if(!empty($_SESSION["email_err"])) {
+            $email = $_SESSION["email_err"];
+            echo "<p class = \"err\" style = \"color: red\"> The email \"$email\" already exists </p>";
+            unset($_SESSION["email_err"]);
+        }
+
+        ?>
+      <input type = "email" name = "email" placeholder = "Enter your email here"  required>
     </div>
 
     <div class = "input-field">
       <label>Phone Number: </label>
       <br>
+        <?php
+        if(!empty($_SESSION["phone_err"])) {
+            $phone = $_SESSION["phone_err"];
+            echo "<p class = \"err\" style = \"color: red\"> The phone number \"$phone\" already exists </p>";
+            unset($_SESSION["phone_err"]);
+        }
+        ?>
       <input type = "tel" name = "phoneNumber" placeholder = "Enter your number here" required>
     </div>
 
@@ -44,6 +60,13 @@
     <div class = "input-field">
       <label>Username: </label>
       <br>
+        <?php
+        if(!empty($_SESSION["user_err"])) {
+            $user = $_SESSION["user_err"];
+            echo "<p class = \"err\" style = \"color: red\"> The username \"$user\" already exists </p>";
+            unset($_SESSION["user_err"]);
+        }
+        ?>
       <input type = "text" name = "username" placeholder = "Enter your username here" required>
     </div>
 
@@ -59,7 +82,7 @@
       <input id = "confirm-password" type = "password" placeholder = "Enter your username here" required>
     </div>
 
-    <button>Submit</button>
+    <button>Sign Up</button>
   </form>
 </div>
 
