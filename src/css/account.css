@@ -33,9 +33,10 @@ html, body{
 
 
 
-#content *{
+#content{
 color: white;
 }
+
 
 button{
     width: 400px;
@@ -46,6 +47,19 @@ button{
 ul{
     list-style: none;
 }
+
+h1{
+    font-size: 45px;
+    text-align: center;
+
+}
+
+input{
+    color:black;
+    width: 400px;
+    height: 40px;
+}
+
 
 /* Hide the scroll bar at the bottom of the container */
 

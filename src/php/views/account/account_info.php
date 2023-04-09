@@ -1,12 +1,17 @@
 <?php
 
 
-require_once 'AccountInfoGetter.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
+require_once '../../account/AccountInfoGetter.php';
 
 $accountInfoGetter = new AccountInfoGetter();
 ?>
 
-<h1 style = "text-align: center; font-size: 75px;">My Account Information</h1>
+<h1> My Account Information</h1>
 <table>
     <tr>
         <td> <h2> First Name: </h2> <td>
