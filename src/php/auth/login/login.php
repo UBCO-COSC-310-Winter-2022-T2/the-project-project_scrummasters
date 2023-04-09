@@ -1,9 +1,6 @@
 <?php
 
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -18,12 +15,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['username'] = $loginFormGetter->getUsername();
         header('Location: ../../views/home.php');
     }
-    else header('Location: ../../../html/loginform.html');
-
+    else {
+        session_start();
+        $_SESSION["login_err"] = "<p style = \"color: red\">The username or password does not match. Please try again.</p>";
+        header('Location: ../../views/loginform.php');
+    }
 
 }
 
 else {
-    echo "<p> Bad Request </p>";
+
+    header("Location: ../../../html/badrequest.html");
+    exit();
 }
 ?>

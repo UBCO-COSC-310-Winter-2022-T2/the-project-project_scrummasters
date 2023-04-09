@@ -17,8 +17,6 @@ class LoginFormValidator
     public function isValid()
     {
 
-
-
         $dbConnection = new dbConnection();
 
 

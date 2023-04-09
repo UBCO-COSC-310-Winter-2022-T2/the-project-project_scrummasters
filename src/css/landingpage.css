@@ -1,0 +1,27 @@
+html, body{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #5965f2;
+
+}
+
+h1{
+    font-size: 100px;
+    width: 100%;
+    color: white;
+}
+
+.buttons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+button{
+    width: 20em;
+    height: 3em;
+}

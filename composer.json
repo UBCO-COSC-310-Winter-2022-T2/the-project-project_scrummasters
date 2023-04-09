@@ -1,7 +1,8 @@
 {
     "name": "shaheershoaib/the-project-project_scrummasters",
     "require": {
-        "phpunit/phpunit": "^10.0"
+        "phpunit/phpunit": "^10.0",
+      "ext-mysqli": "*"
     },
     "autoload": {
         "psr-4": {
