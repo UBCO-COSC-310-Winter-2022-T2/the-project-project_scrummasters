@@ -14,22 +14,22 @@ class phpUnitTest extends TestCase
         //add test user to the discordUser table
         $_POST['test']='testing';
         $this->dbConnection = new dbConnection();
-        $sql = "INSERT INTO discordUser(firstName, lastName, email, phoneNumber, username, password) VALUES('test', 'test','test@gmail.com','0123456789','test','test')";
+        $sql = "INSERT INTO discordUser(firstName, lastName, email, phoneNumber, username, password) VALUES('test', 'test','test@gmail.com','0123456789','testing','test')";
         $result = mysqli_query($this->dbConnection->getConnection(), $sql);
     }
 
     protected function tearDown(): void
     {
         //deleting test user from table discordUser
-        $sql = "DELETE FROM discordUser WHERE firstName='test'";
-        $result = mysqli_query($this->dbConnection->getConnection(), $sql);
+        $sqldown = "DELETE FROM discordUser WHERE username='testing'";
+        $result = mysqli_query($this->dbConnection->getConnection(), $sqldown);
         unset($_POST['username']);
         unset($_POST['password']);
         unset($_POST['email']);
         unset($_POST['phoneNumber']);
         unset($_POST['firstName']);
         unset($_POST['lastName']);
-        unset($_POST['test']);
+        $_POST['test'] = null;
 
         //deleteUserFromDatabase
 
@@ -39,6 +39,7 @@ class phpUnitTest extends TestCase
 
 
     public function testRegistrationNew(){
+        $bool = false;
         $_POST['username'] = 'testRegistration';
         $_POST['password'] = 'testRegistration';
         $_POST['email'] = 'testRegistration@gmail.com';
@@ -58,7 +59,7 @@ class phpUnitTest extends TestCase
         $sql = "SELECT username FROM discordUser WHERE username = 'testRegistration'";
         $result = mysqli_query($this->dbConnection->getConnection(), $sql);
 
-        $sql2 = "DELETE FROM discordUser";
+        $sql2 = "DELETE FROM discordUser WHERE username = 'testRegistration'";
         $result2 = mysqli_query($this->dbConnection->getConnection(), $sql2);
 
         if($row = mysqli_fetch_assoc($result))
@@ -74,11 +75,6 @@ class phpUnitTest extends TestCase
         $this->assertTrue(true);
     }
 
-
-    public function testSimpleFalse()
-    {
-        $this->assertFalse(true);
-    }
 }
 
 ?>

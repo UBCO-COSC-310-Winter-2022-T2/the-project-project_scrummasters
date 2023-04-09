@@ -2,8 +2,9 @@
 
 
 
-if($_POST['test'] = 'testing'){
+if($_POST['test'] == 'testing'){
     require_once('../db/dbConnection.php');
+    require_once('SignUpFormValidator.php');
 }
 else{
     require_once('SignUpFormValidator.php');
@@ -40,7 +41,10 @@ class SignUpFormInserter
 
         $signUpFormValidator = new SignUpFormValidator($email, $username, $phoneNumber);
         if(!$signUpFormValidator->isValid()) {
-            header("Location: ../../views/signupform.php");
+
+                header("Location: ../../views/signupform.php");
+
+
             exit();
         }
 
