@@ -1,8 +1,18 @@
 <?php
 
 
-require_once('SignUpFormValidator.php');
-require_once('../../db/dbConnection.php');
+
+if($_POST['test'] = 'testing'){
+    require_once('../db/dbConnection.php');
+}
+else{
+    require_once('SignUpFormValidator.php');
+    require_once('../../db/dbConnection.php');
+}
+
+
+
+
 
 class SignUpFormInserter
 {
