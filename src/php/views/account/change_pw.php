@@ -35,20 +35,20 @@ if(empty($_SESSION["username"]))
 <div id = "confirmPasswordContainer">
 <label>Old Password:</label>
 <br>
-<input type = "password" id = "oldPassword" name = "oldPassword">
+<input type = "password" id = "oldPassword" name = "oldPassword" class = "redIfEmpty" required>
 <br>
 <label>New Password:</label>
 <br>
 
-<input type = "password" id = "newPassword" name = "newPassword" class = "redIfInvalid">
+<input type = "password" id = "newPassword" name = "newPassword" class = "redIfInvalid redIfEmpty" required>
     <div class = "err"></div>
 <br>
 <label>Confirm New Password:</label>
 <br>
-<input type = "password" id = "confirmNewPassword" class = "redIfInvalid">
+<input type = "password" id = "confirmNewPassword" class = "redIfInvalid redIfEmpty" required>
     <div class = "err"></div>
 <br>
-<button id = "changePasswordButton">Change Password</button>
+<button id = "changePasswordButton">Change</button>
 </div>
 
 </body>
@@ -56,16 +56,34 @@ if(empty($_SESSION["username"]))
 
 
 <script>
-
+    var dontMakeNewPasswordAndConfirmPasswordWhite = false;
 $("#changePasswordButton").on("click", function(e){
     const newPassword = $("#newPassword").val();
     const confirmNewPassword = $("#confirmNewPassword");
-    if(newPassword != confirmNewPassword) {
+    const oldPassword = $("#oldPassword").val();
+
+
+    if(newPassword =="" || confirmNewPassword == "" || oldPassword == "")
+    {
+        e.preventDefault();
+        alert("Please fill out all fields");
+        $(".redIfEmpty").css("background-color", "red");
+    }
+
+   else if(newPassword != confirmNewPassword) {
         e.preventDefault();
         const errMsg = $("<p style = \"color: red\">Passwords do not match</p>");
         $(".err").html(errMsg);
         $(".redIfInvalid").css("background-color", "red");
+        dontMakeNewPasswordAndConfirmPasswordWhite = true;
+
     }
+})
+
+$(".redIfEmpty").on("input", function(){
+    $(this).css("background-color", "white");
+    if(dontMakeNewPasswordAndConfirmPasswordWhite)
+        $(".redIfInvalid").css("background-color", "red");
 })
 
 </script>
