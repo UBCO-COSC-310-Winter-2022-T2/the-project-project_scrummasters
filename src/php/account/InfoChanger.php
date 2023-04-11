@@ -26,7 +26,7 @@ class InfoChanger
         $this->hashedPassword = $_SESSION["password"];
     }
 
-    public function conrfirmPassword()
+    public function confirmPassword()
     {
         $confirmPassword = "SELECT password FROM discordUser WHERE username = '$this->username'";
         $result = mysqli_query($this->dbConnection->getConnection(), $confirmPassword);
@@ -37,8 +37,13 @@ class InfoChanger
 
     public function changeInfo()
     {
+        $allowedParams = ['firstName', 'lastName', 'email', 'phoneNumber', 'username', 'password'];
+        if (!in_array($this->param, $allowedParams)) {
+            throw new InvalidArgumentException("Invalid parameter: {$this->param}");
+        }
+
         $changeUniqueInfo = "UPDATE discordUser SET `$this->param` = '$this->value' WHERE username ='$this->username'";
-        mysqli_query($this->dbConnection->getConnection(), $changeUniqueInfo);
+       return mysqli_query($this->dbConnection->getConnection(), $changeUniqueInfo);
     }
     public function isInfoUnique()
     {

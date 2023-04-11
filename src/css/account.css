@@ -41,6 +41,10 @@ html, body{
     height: 30px;
 }
 
+#content input{
+    color: black;
+}
+
 
 
 button{
@@ -120,8 +124,6 @@ input{
     display: none !important;
 }
 /* Hide the scroll bar at the bottom of the container */
-
-
 
 
 

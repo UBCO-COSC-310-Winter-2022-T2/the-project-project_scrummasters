@@ -27,7 +27,7 @@ if(empty($_SESSION["username"]))
 <div id = "options">
 <ul>
     <li>
-    <button link = "account_info.php">Edit Account Information</button>
+    <button id = "activateOnVisit" link = "account_info.php">Edit Account Information</button>
     </li>
 
     <li>
@@ -48,6 +48,10 @@ if(empty($_SESSION["username"]))
 
 <script>
 
+    $(document).ready(function() {
+        $("#activateOnVisit").trigger("click");
+    });
+
     $("button").on("click", function(){
         const link = $(this).attr("link");
         $.get(link, function(data){
@@ -59,5 +63,7 @@ if(empty($_SESSION["username"]))
         $(this).parent().siblings().children().removeClass("active");
         $(this).parent().siblings().children().prop("disabled", false);
     });
+
+
 
 </script>
