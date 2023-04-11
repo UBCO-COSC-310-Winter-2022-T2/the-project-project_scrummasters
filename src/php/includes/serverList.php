@@ -46,14 +46,14 @@ $dbConnection = new dbConnection();
 $connection = $dbConnection->getConnection();
 
 //get userID
-$sql1 = "SELECT userID FROM `discorduser` WHERE username = '$username'";
-$result1 = mysqli_query($connection, $sql1);
-$row1 = $result1->fetch_assoc();
-$userID = $row1['userID'];
+
 
 // Query your database
-$sql = "SELECT * FROM userinserver WHERE userID = $userID";
+$sql = "SELECT * FROM userinserver WHERE username = \"$username\"";
+
 $result = mysqli_query($connection, $sql);
+
+
 
 // Check if result exists and has rows
 echo ('<div class="vertical-menu">');
@@ -63,6 +63,7 @@ if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         // Get the value of the column you want to use for the link
         $linkValue = $row['serverID'];
+
 
         // Create the link using the value
 
