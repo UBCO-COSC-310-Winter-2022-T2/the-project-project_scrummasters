@@ -11,7 +11,8 @@ email varChar(100)
 );
 
 CREATE TABLE discordServer(
-serverName varchar(50) PRIMARY KEY,
+serverID int AUTO_INCREMENT PRIMARY KEY;
+serverName varchar(50),
 inviteLink varChar(50),
 adminUsername varchar(50),
 FOREIGN KEY (adminUsername) REFERENCES discordUser(username) ON DELETE CASCADE
@@ -23,7 +24,7 @@ serverMessage varchar(500),
 senderUsername varchar(50),
 serverName varchar(50),
 FOREIGN KEY (senderUsername) REFERENCES discordUser(username) ON DELETE CASCADE,
-FOREIGN KEY (serverName) REFERENCES discordServer(serverName) ON DELETE CASCADE
+FOREIGN KEY (serverName) REFERENCES discordServer(serverID) ON DELETE CASCADE
 );
 
 CREATE TABLE directMessage(
@@ -40,7 +41,7 @@ username varchar(50),
 serverName varchar(50),
 PRIMARY KEY (username, serverName),
 FOREIGN KEY (username) REFERENCES discordUser(username) ON DELETE CASCADE,
-FOREIGN KEY (serverName) REFERENCES discordServer(serverName) ON DELETE CASCADE
+FOREIGN KEY (serverName) REFERENCES discordServer(serverID) ON DELETE CASCADE
 );
 
 CREATE TABLE friendRequest(
