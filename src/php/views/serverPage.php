@@ -27,6 +27,7 @@ if (empty($_SESSION["username"])) {
 $serverID = $_GET['serverID'];
 require_once '../server/serverInfoGetter.php';
 $serverInfoGetter = new serverInfoGetter($serverID);
+$_POST["serverID"] = $serverID;
 $connection = $serverInfoGetter->connection;
 
 $sql = 'SELECT * FROM servermessage WHERE serverID = ' . $serverID . ' ';
@@ -43,13 +44,21 @@ if ($result && $result->num_rows > 0) {
 
 
     }
+    echo('</div>');
 
     // Free the result set
     $result->free();
 } else {
     echo "BE THE FIRST ONE TO SEND A MESSAGE!";
 }
-
-
-
-echo $serverID;
+?>
+<?php
+echo ("<form method = \"post\" action = \"../server/sendMessage.php?serverID=$serverID\">");
+?>
+    <div class = "input-field">
+        <br>
+        <input type = "text" name = "message" placeholder = "Enter your message here" required>
+    </div>
+    <button>Send</button>
+</form>
+</body>
