@@ -30,6 +30,6 @@ class PasswordChanger
     public function changePassword()
     {
         $changePasswordSQL = "UPDATE discordUser SET password = '$this->newPassword' WHERE username = '$this->username'";
-        mysqli_query($this->dbConnection->getConnection(), $changePasswordSQL);
+        return mysqli_query($this->dbConnection->getConnection(), $changePasswordSQL);
     }
 }

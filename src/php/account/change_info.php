@@ -22,7 +22,7 @@ $_SESSION["password"] = md5($_POST["password"]);
 
 $infoChanger = new InfoChanger();
 
-if(!$infoChanger->conrfirmPassword()) {
+if(!$infoChanger->confirmPassword()) {
     echo "<p style = \"color: red\" > Sorry, but the password was not correct. Please try again.</p>";
     exit();
     }

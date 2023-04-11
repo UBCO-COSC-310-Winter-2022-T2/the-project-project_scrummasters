@@ -12,7 +12,7 @@ class dbConnection
 
     public function __construct()
     {
-        $this->host = "localhost";
+        $this->host = "127.0.0.1";
         $this->database = "discord";
         $this->user = "root";
         $this->password = "";

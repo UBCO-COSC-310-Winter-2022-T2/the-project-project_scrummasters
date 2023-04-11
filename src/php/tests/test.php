@@ -14,7 +14,11 @@ class phpUnitTest extends TestCase
         //add test user to the discordUser table
         $_POST['test']='testing';
         $this->dbConnection = new dbConnection();
+        session_start();
+        session_destroy();
+        session_start();
         $sql = "INSERT INTO discordUser(firstName, lastName, email, phoneNumber, username, password) VALUES('test', 'test','test@gmail.com','0123456789','testing','test')";
+        $_SESSION["username"] = "testing";
         $result = mysqli_query($this->dbConnection->getConnection(), $sql);
     }
 
@@ -29,6 +33,8 @@ class phpUnitTest extends TestCase
         unset($_POST['phoneNumber']);
         unset($_POST['firstName']);
         unset($_POST['lastName']);
+        session_start();
+        session_destroy();
         $_POST['test'] = null;
 
         //deleteUserFromDatabase
@@ -69,6 +75,84 @@ class phpUnitTest extends TestCase
         self::assertTrue($bool);
     }
 
+
+    public function testChangeFirstName()
+    {
+        require_once '../account/InfoChanger.php';
+
+        session_start();
+        $_SESSION["param"] = "firstName";
+        $_SESSION["value"] = "testNew";
+        $infoChanger = new InfoChanger();
+        $_SESSION["password"] = md5("test");
+
+        self::assertTrue($infoChanger->changeInfo());
+    }
+
+    public function testChangeLastName()
+    {
+        require_once '../account/InfoChanger.php';
+
+        session_start();
+        $_SESSION["param"] = "lastName";
+        $_SESSION["value"] = "testNew";
+        $infoChanger = new InfoChanger();
+        $_SESSION["password"] = md5("test");
+
+        self::assertTrue($infoChanger->changeInfo());
+    }
+
+    public function testChangeUsername()
+    {
+        require_once '../account/InfoChanger.php';
+
+        session_start();
+        $_SESSION["param"] = "username";
+        $_SESSION["value"] = "testNew";
+        $infoChanger = new InfoChanger();
+        $_SESSION["password"] = md5("test");
+
+        self::assertTrue($infoChanger->changeInfo());
+    }
+
+    public function testChangeEmailAddress()
+    {
+        require_once '../account/InfoChanger.php';
+
+        session_start();
+        $_SESSION["param"] = "email";
+        $_SESSION["value"] = "testNew@test.com";
+        $infoChanger = new InfoChanger();
+        $_SESSION["password"] = md5("test");
+
+        self::assertTrue($infoChanger->changeInfo());
+    }
+
+    public function testChangePhoneNumber()
+    {
+        require_once '../account/InfoChanger.php';
+
+        session_start();
+        $_SESSION["param"] = "phoneNumber";
+        $_SESSION["value"] = "101011011";
+        $infoChanger = new InfoChanger();
+        $_SESSION["password"] = md5("test");
+
+        self::assertTrue($infoChanger->changeInfo());
+    }
+
+    public function testChangePassword()
+    {
+        require_once '../account/PasswordChanger.php';
+
+        session_start();
+        $_SESSION["newPassword"] = "testNew";
+        $_SESSION["oldPassword"] = "test";
+
+        $passwordChanger = new PasswordChanger();
+        self::assertTrue($passwordChanger->changePassword());
+
+    }
 
     public function testSimpleTrue()
     {
