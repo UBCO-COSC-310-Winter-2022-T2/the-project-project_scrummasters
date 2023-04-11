@@ -19,7 +19,7 @@ FOREIGN KEY (adminUsername) REFERENCES discordUser(username) ON DELETE CASCADE
 
 CREATE TABLE serverMessage(
 serverMessageID int AUTO_INCREMENT PRIMARY KEY,
-serverMessage varchar(500)
+serverMessage varchar(500),
 senderUsername varchar(50),
 serverName varchar(50),
 FOREIGN KEY (senderUsername) REFERENCES discordUser(username) ON DELETE CASCADE,
