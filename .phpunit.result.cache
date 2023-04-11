@@ -1,1 +1,1 @@
-{"version":1,"defects":{"phpUnitTest::testSimpleFalse":7},"times":{"phpUnitTest::testSimpleTrue":0.003,"phpUnitTest::testSimpleFalse":0.008}}
+{"version":1,"defects":{"phpUnitTest::testSimpleFalse":7,"phpUnitTest::testRegistrationNew":8,"phpUnitTest::testRegistrationExisting":5},"times":{"phpUnitTest::testSimpleTrue":0.005,"phpUnitTest::testSimpleFalse":0.006,"phpUnitTest::testRegistrationNew":0.02,"phpUnitTest::testRegistrationExisting":0.005}}
