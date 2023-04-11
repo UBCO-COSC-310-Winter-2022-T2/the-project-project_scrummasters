@@ -1,3 +1,14 @@
+<?php
+
+if(empty($_SESSION["username"]))
+{
+    header("Location: ../loginform.php");
+    exit();
+}
+
+
+?>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <label>Enter your new <?php echo $_POST["placeholder_attr"];?>: </label>

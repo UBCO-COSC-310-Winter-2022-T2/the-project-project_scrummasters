@@ -3,6 +3,13 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+
+if($_SERVER["REQUEST_METHOD"] != "POST")
+{
+    header("Location: ../../html/badrequest.html");
+    exit();
+}
+
 session_start();
 require_once '../db/dbConnection.php';
 $param =  $_POST["param"];
