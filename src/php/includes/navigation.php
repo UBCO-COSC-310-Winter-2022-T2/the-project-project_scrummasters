@@ -11,6 +11,7 @@ switch ($_SERVER["SCRIPT_NAME"]) {
         $CURRENT_PAGE = "None";
 }
 ?>
+
 <style>
     ul {
         list-style-type: none;
@@ -46,18 +47,23 @@ switch ($_SERVER["SCRIPT_NAME"]) {
 <div class="container">
 
     <ul "nav nav-pills">
-    <li class="nav-item">
-        <a class="nav-link <?php if ($CURRENT_PAGE == "Home") {?>active<?php }?>" href="../views/home.php">Home</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "friends") {?>active<?php }?>" href="../views/home.php">Friends</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../views/home.php">Account</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../views/home.php">Server</a>
-    </li>
+
+        <li class="nav-item">
+            <a class="nav-link <?php if ($CURRENT_PAGE == "Home") {?>active<?php }?>" href="../views/home.php">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "friends") {?>active<?php }?>" href="../views/account/account.php">Friends</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../views/account/account.php">Account</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../views/home.php">Server</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../auth/login/logout.php">Logout</a>
+        </li>
+
     </ul>
 </div>
 

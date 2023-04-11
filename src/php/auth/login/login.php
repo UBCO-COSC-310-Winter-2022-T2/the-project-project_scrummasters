@@ -1,11 +1,12 @@
 <?php
 
 
-
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     require_once 'LoginFormGetter.php';
     require_once 'LoginFormValidator.php';
+
+
 
     $loginFormGetter = new LoginFormGetter();
     $loginFormValidator = new LoginFormValidator($loginFormGetter);
@@ -27,5 +28,7 @@ else {
 
     header("Location: ../../../html/badrequest.html");
     exit();
+
 }
+
 ?>
