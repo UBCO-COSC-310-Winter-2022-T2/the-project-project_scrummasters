@@ -27,11 +27,15 @@ if(empty($_SESSION["username"]))
 <div id = "options">
 <ul>
     <li>
-    <button id = "activateOnVisit" link = "account_info.php">Edit Account Information</button>
+    <button id = "activateOnVisit" link = "account_info.php" class = "editAccountInfo">Edit Account Information</button>
     </li>
 
     <li>
-        <button link = "change_pw.php">Change Password</button>
+        <button link = "change_pw.php" class = "editAccountInfo" >Change Password</button>
+    </li>
+
+    <li>
+        <button id = "delete">Delete Account</button>
     </li>
 
 </ul>
@@ -52,7 +56,7 @@ if(empty($_SESSION["username"]))
         $("#activateOnVisit").trigger("click");
     });
 
-    $("button").on("click", function(){
+    $(".editAccountInfo").on("click", function(){
         const link = $(this).attr("link");
         $.get(link, function(data){
             $("#content").html(data);
@@ -63,6 +67,14 @@ if(empty($_SESSION["username"]))
         $(this).parent().siblings().children().removeClass("active");
         $(this).parent().siblings().children().prop("disabled", false);
     });
+
+    $("#delete").on("click", function(){
+        $.get("../../users/deleteAccount.php", function(data){
+            window.href = "../../../html/homepage.html";
+        });
+    });
+
+    
 
 
 
