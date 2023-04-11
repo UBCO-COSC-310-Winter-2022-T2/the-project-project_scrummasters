@@ -8,9 +8,14 @@
 
 
 // Connect to your MySQL database
-session_start();
 
+if(empty($_SESSION["username"]))
+{
+    header("Location: ../loginform.php");
+    exit();
+}
 
+require_once('../db/dbConnection.php');
 $username = $_SESSION['username'];
 $dbConnection = new dbConnection();
 
@@ -25,6 +30,7 @@ $sql = "SELECT * FROM userinserver WHERE userID = $userID";
 $result = mysqli_query($this->dbConnection->getConnection(), $sql);
 
 // Check if result exists and has rows
+echo("<ul>");
 if ($result && $result->num_rows > 0) {
     // Loop through each row in the result
     while ($row = $result->fetch_assoc()) {
@@ -32,7 +38,9 @@ if ($result && $result->num_rows > 0) {
         $linkValue = $row['serverID'];
 
         // Create the link using the value
-        echo "<a href='../views/server.php?serverID=32$linkValue'>" . $linkValue . "</a><br>";
+        echo("<li>");
+        echo "<button link ='../views/serverPage.php?serverID=$linkValue'> $linkValue</button><br>";
+        echo("</li>");
     }
 
     // Free the result set
@@ -40,6 +48,7 @@ if ($result && $result->num_rows > 0) {
 } else {
     echo "No results found.";
 }
+echo("</ul>");
 
 // Close the database connection
 
