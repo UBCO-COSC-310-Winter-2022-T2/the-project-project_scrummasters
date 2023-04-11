@@ -58,6 +58,9 @@ switch ($_SERVER["SCRIPT_NAME"]) {
         <li class="nav-item">
             <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../views/home.php">Server</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../auth/login/logout.php">Logout</a>
+        </li>
     </ul>
 </div>
 
