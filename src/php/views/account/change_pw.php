@@ -36,7 +36,8 @@ if(empty($_SESSION["username"]))
 <label>Old Password:</label>
 <br>
 <input type = "password" id = "oldPassword" name = "oldPassword" class = "redIfEmpty" required>
-<br>
+    <div id="incorrectPasswordDisplayer"></div>
+    <br>
 <label>New Password:</label>
 <br>
 
@@ -59,7 +60,7 @@ if(empty($_SESSION["username"]))
     var dontMakeNewPasswordAndConfirmPasswordWhite = false;
 $("#changePasswordButton").on("click", function(e){
     const newPassword = $("#newPassword").val();
-    const confirmNewPassword = $("#confirmNewPassword");
+    const confirmNewPassword = $("#confirmNewPassword").val();
     const oldPassword = $("#oldPassword").val();
 
 
@@ -70,7 +71,8 @@ $("#changePasswordButton").on("click", function(e){
         $(".redIfEmpty").css("background-color", "red");
     }
 
-   else if(newPassword != confirmNewPassword) {
+   else if(newPassword != confirmNewPassword)
+   {
         e.preventDefault();
         const errMsg = $("<p style = \"color: red\">Passwords do not match</p>");
         $(".err").html(errMsg);
@@ -78,12 +80,27 @@ $("#changePasswordButton").on("click", function(e){
         dontMakeNewPasswordAndConfirmPasswordWhite = true;
 
     }
-})
+
+   else
+   {
+       $(".redIfInvalid").css("background-color", "white");
+       $(".err").html("");
+       $("#incorrectPasswordDisplayer").html("");
+    $.post("../../account/change_pw.php", {oldPassword: oldPassword, newPassword: newPassword}, function(data){
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = data;
+        if(tempDiv.getElementsByTagName("p").length > 0)
+            $("#incorrectPasswordDisplayer").html(data);
+        else alert("Password successfully changed");
+
+    });
+   }
+});
 
 $(".redIfEmpty").on("input", function(){
     $(this).css("background-color", "white");
     if(dontMakeNewPasswordAndConfirmPasswordWhite)
         $(".redIfInvalid").css("background-color", "red");
-})
+});
 
 </script>

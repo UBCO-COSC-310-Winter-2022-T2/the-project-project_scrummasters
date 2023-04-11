@@ -24,13 +24,7 @@ if(empty($_SESSION["username"]))
 <button id = "close-overlay">Cancel</button>
 <button id = "submit-change">Change</button>
 </div>
-
-
-
-<div id = "err_msg">
-
-</div>
-
+<div id = "err_msg"></div>
 
 <script>
 
