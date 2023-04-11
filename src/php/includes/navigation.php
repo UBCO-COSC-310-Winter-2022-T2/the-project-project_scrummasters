@@ -18,8 +18,8 @@ switch ($_SERVER["SCRIPT_NAME"]) {
         margin: 0;
         padding: 0;
         overflow: hidden;
-        border: 1px solid #e7e7e7;
-        background-color: #f3f3f3;
+        border: 3px solid #171a1c;
+        background-color: #23272a;
     }
 
     li {
@@ -28,7 +28,7 @@ switch ($_SERVER["SCRIPT_NAME"]) {
 
     li a {
         display: block;
-        color: #666;
+        color: white;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
@@ -47,6 +47,7 @@ switch ($_SERVER["SCRIPT_NAME"]) {
 <div class="container">
 
     <ul "nav nav-pills">
+
         <li class="nav-item">
             <a class="nav-link <?php if ($CURRENT_PAGE == "Home") {?>active<?php }?>" href="../views/home.php">Home</a>
         </li>
@@ -62,6 +63,7 @@ switch ($_SERVER["SCRIPT_NAME"]) {
         <li class="nav-item">
             <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../auth/login/logout.php">Logout</a>
         </li>
+
     </ul>
 </div>
 
