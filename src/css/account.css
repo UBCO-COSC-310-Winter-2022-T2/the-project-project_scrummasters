@@ -19,6 +19,8 @@ html, body{
 }
 
 
+
+
 #content{
     padding: 50px;
     background-color: #313338;
@@ -30,12 +32,15 @@ html, body{
 
 }
 
-
-
-
-#content{
-color: white;
+#content *{
+    color: white;
 }
+
+#content button{
+    width: 100px;
+    height: 30px;
+}
+
 
 
 button{
@@ -60,7 +65,60 @@ input{
     height: 40px;
 }
 
+.field{
+    margin-top: 20px;
+}
 
+.container{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+#account-info {
+    width: 75%;
+    border: 4px solid black;
+    border-radius: 4px;
+    padding: 50px;
+    background-color: #1e1f22;
+}
+
+#account-info button{
+    margin-top: 0;
+    float: right;
+    clear: both;
+}
+
+
+#overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#overlay-content{
+    background-color: #313338;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.hidden{
+    display: none !important;
+}
 /* Hide the scroll bar at the bottom of the container */
 
 

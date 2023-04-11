@@ -16,28 +16,13 @@
 <div id = "options">
 <ul>
     <li>
-    <button link = "account_info.php">Account Information</button>
+    <button link = "account_info.php">Edit Account Information</button>
     </li>
 
     <li>
-        <button link = "change_name.php">Change Name</button>
+        <button link = "change_pw.php">Change Password</button>
     </li>
 
-    <li>
-        <button link = "change_username.php">Change Username</button>
-    </li>
-
-    <li>
-        <button link = "change_email.php">Change Email</button>
-    </li>
-
-    <li>
-        <button link = "change_phoneNumber.php">Change PhoneNumber</button>
-    </li>
-
-    <li>
-        <button link = "change_password.php">Change Password</button>
-    </li>
 </ul>
 
 </div>
