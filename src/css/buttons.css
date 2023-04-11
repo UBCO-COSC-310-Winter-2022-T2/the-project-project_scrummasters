@@ -12,3 +12,16 @@ button:hover{
     background-color: #2e0753;
 
 }
+
+button:active{
+    background-color: #04AA6D;
+    transition: none;
+}
+
+.active{
+    background-color: #04AA6D !important;
+}
+
+.active:hover{
+    cursor: default !important;
+}
