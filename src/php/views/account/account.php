@@ -70,7 +70,7 @@ if(empty($_SESSION["username"]))
 
     $("#delete").on("click", function(){
         $.get("../../users/deleteAccount.php", function(data){
-            window.href = "../../../html/homepage.html";
+            window.location.href = "../../../html/homepage.html";
         });
     });
 
