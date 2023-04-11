@@ -37,9 +37,10 @@ if(empty($_SESSION["username"]))
         const param = "<?php echo $_POST["param"]; ?>";
         const newValue = $("#newValue").val();
         const pw = $("#pw").val();
+        const kind = "<?php echo $_POST["kind"];?>";
 
         if(newValue != "" && pw != "") {
-            $.post("../../account/change_info.php", {param: param, value: newValue, password: pw}, function (data) {
+            $.post("../../account/change_info.php", {param: param, value: newValue, password: pw, kind: kind}, function (data) {
                 var tempDiv = document.createElement('div');
                 tempDiv.innerHTML = data;
                 var pElements = tempDiv.getElementsByTagName('p');
@@ -58,6 +59,9 @@ if(empty($_SESSION["username"]))
         }
         else{
             alert("Please fill in all fields");
+            $("input").filter(function(){
+                return $(this).val() == "";
+            }).css("background-color", "red")
         }
 
     });

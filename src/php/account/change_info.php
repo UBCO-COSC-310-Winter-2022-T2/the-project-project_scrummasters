@@ -19,7 +19,6 @@ $_SESSION["value"] = $_POST["value"];
 $_SESSION["password"] = md5($_POST["password"]);
 
 
-
 $infoChanger = new InfoChanger();
 
 if(!$infoChanger->confirmPassword()) {
@@ -35,7 +34,8 @@ if( $_SESSION["param"] == "email" || $_SESSION["param"] == "username" || $_SESSI
             $_SESSION["username"] = $_SESSION["value"];
     }
     else{
-        echo "<p style = \"color: red\" > The banana was not unique</p>";
+        $kind = strtolower($_POST["kind"]);
+        echo "<p style = \"color: red\" > The {$kind} you entered was not unique. Please try again.</p>";
         exit();
     }
 }

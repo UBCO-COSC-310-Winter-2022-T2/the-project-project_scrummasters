@@ -67,8 +67,11 @@ $("#changePasswordButton").on("click", function(e){
     if(newPassword =="" || confirmNewPassword == "" || oldPassword == "")
     {
         e.preventDefault();
-        alert("Please fill out all fields");
-        $(".redIfEmpty").css("background-color", "red");
+        alert("Please fill in all fields");
+        $(".redIfEmpty").filter(function(){
+            return $(this).val() == "";
+        }).css("background-color", "red");
+
     }
 
    else if(newPassword != confirmNewPassword)
@@ -76,6 +79,7 @@ $("#changePasswordButton").on("click", function(e){
         e.preventDefault();
         const errMsg = $("<p style = \"color: red\">Passwords do not match</p>");
         $(".err").html(errMsg);
+
         $(".redIfInvalid").css("background-color", "red");
         dontMakeNewPasswordAndConfirmPasswordWhite = true;
 
@@ -91,13 +95,20 @@ $("#changePasswordButton").on("click", function(e){
         tempDiv.innerHTML = data;
         if(tempDiv.getElementsByTagName("p").length > 0)
             $("#incorrectPasswordDisplayer").html(data);
-        else alert("Password successfully changed");
+        else
+        {
+            alert("Password successfully changed");
+            $("#oldPassword").val("");
+            $("#newPassword").val("");
+            $("#confirmNewPassword").val("");
+        }
 
     });
    }
 });
 
 $(".redIfEmpty").on("input", function(){
+
     $(this).css("background-color", "white");
     if(dontMakeNewPasswordAndConfirmPasswordWhite)
         $(".redIfInvalid").css("background-color", "red");

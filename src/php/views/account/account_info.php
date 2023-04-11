@@ -53,8 +53,11 @@ $accountInfoGetter = new AccountInfoGetter();
     $(".edit-field").on("click", function(){
         const param = $(this).attr("param");
         const placeholderAttr = $(this).attr("placeholder_attr");
+        const kind = $(this).siblings("h2").filter(function(){
+            return $(this).attr("param") == param;
+        }).attr("kind");
 
-        $.post("overlay_content.php", {param: param, placeholder_attr: placeholderAttr},  function(data){
+        $.post("overlay_content.php", {param: param, placeholder_attr: placeholderAttr, kind: kind},  function(data){
             $("#overlay").removeClass("hidden");
             $("#overlay-content").removeClass("hidden");
             $("#overlay-content").html(data);
