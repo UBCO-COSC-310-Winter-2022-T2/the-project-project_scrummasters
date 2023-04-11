@@ -22,9 +22,9 @@ CREATE TABLE serverMessage(
 serverMessageID int AUTO_INCREMENT PRIMARY KEY,
 serverMessage varchar(500),
 senderUsername varchar(50),
-serverName varchar(50),
+serverID int,
 FOREIGN KEY (senderUsername) REFERENCES discordUser(username) ON DELETE CASCADE,
-FOREIGN KEY (serverName) REFERENCES discordServer(serverID) ON DELETE CASCADE
+FOREIGN KEY (serverID) REFERENCES discordServer(serverID) ON DELETE CASCADE
 );
 
 CREATE TABLE directMessage(
@@ -38,10 +38,10 @@ FOREIGN KEY (destUsername) REFERENCES discordUser(username) ON DELETE CASCADE
 
 CREATE TABLE userInServer(
 username varchar(50),
-serverName varchar(50),
-PRIMARY KEY (username, serverName),
+serverID int,
+PRIMARY KEY (username, serverID),
 FOREIGN KEY (username) REFERENCES discordUser(username) ON DELETE CASCADE,
-FOREIGN KEY (serverName) REFERENCES discordServer(serverID) ON DELETE CASCADE
+FOREIGN KEY (serverID) REFERENCES discordServer(serverID) ON DELETE CASCADE
 );
 
 CREATE TABLE friendRequest(
