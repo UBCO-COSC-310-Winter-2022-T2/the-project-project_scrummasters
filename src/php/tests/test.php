@@ -27,6 +27,7 @@ class phpUnitTest extends TestCase
         //deleting test user from table discordUser
         $sqldown = "DELETE FROM discordUser WHERE username='testing'";
         $result = mysqli_query($this->dbConnection->getConnection(), $sqldown);
+
         unset($_POST['username']);
         unset($_POST['password']);
         unset($_POST['email']);
@@ -111,8 +112,9 @@ class phpUnitTest extends TestCase
         $_SESSION["value"] = "testNew";
         $infoChanger = new InfoChanger();
         $_SESSION["password"] = md5("test");
-
-        self::assertTrue($infoChanger->changeInfo());
+        $bool = $infoChanger->changeInfo();
+        mysqli_query($this->dbConnection->getConnection(), "DELETE FROM discordUser WHERE username = \"testNew\"");
+        self::assertTrue($bool);
     }
 
     public function testChangeEmailAddress()
