@@ -11,7 +11,7 @@ email varChar(100)
 );
 
 CREATE TABLE discordServer(
-serverID int AUTO_INCREMENT PRIMARY KEY;
+serverID int AUTO_INCREMENT PRIMARY KEY,
 serverName varchar(50),
 inviteLink varChar(50),
 adminUsername varchar(50),
