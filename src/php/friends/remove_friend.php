@@ -19,6 +19,7 @@ require_once 'FriendRemover.php';
 $_SESSION["friendUsername"] = $_POST["friendUsername"];
 $friendRemover = new FriendRemover();
 $friendRemover->removeFriend();
+unset($_SESSION["friendUsername"]);
 
 
 ?>

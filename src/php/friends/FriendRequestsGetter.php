@@ -1,7 +1,7 @@
 <?php
 
 
-class FriendsListGetter
+class FriendRequestsGetter
 {
     private $username;
     private $dbConnection;
@@ -14,9 +14,9 @@ class FriendsListGetter
         $this->username = $_SESSION["username"];
     }
 
-    public function getFriends()
+    public function getFriendRequests()
     {
-        $getFriendsSQL = "(SELECT username1 as friend FROM friend WHERE username2 = '$this->username') UNION (SELECT username2 as friend FROM friend WHERE username1 = '$this->username')";
+        $getFriendsSQL = "SELECT username1 as friendRequest FROM friendRequest WHERE username2 = '$this->username'";
         return mysqli_query($this->dbConnection->getConnection(), $getFriendsSQL);
 
     }

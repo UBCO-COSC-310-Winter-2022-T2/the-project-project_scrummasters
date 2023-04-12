@@ -34,6 +34,10 @@ if(empty($_SESSION["username"]))
             <button link = "friend_requests.php">Friend Requests</button>
         </li>
 
+        <li>
+            <button link = "add_friends.php">Add Friends</button>
+        </li>
+
     </ul>
 
 </div>

@@ -1,11 +1,6 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-
-
+session_start();
 
 ?>
 <!DOCTYPE html>
@@ -17,7 +12,7 @@ error_reporting(E_ALL);
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        #friendsList {
+        #potentialFriendsList {
             width: 75%;
             border: 4px solid black;
             border-radius: 4px;
@@ -25,7 +20,7 @@ error_reporting(E_ALL);
             background-color: #1e1f22;
         }
 
-        .friend{
+        .potentialFriend{
             display: flex;
             justify-content: space-between;
             flex-direction: row;
@@ -34,23 +29,26 @@ error_reporting(E_ALL);
             width: 100%;
         }
 
-        #friendsList label{
+
+        #potentialFriendsList label{
             display: inline-block;
         }
 
-        .friend button{
+        .potentialFriend button{
             float: right;
         }
 
-      .friend button{
-          transform: translateY(-25%);
-      }
+        .potentialFriend button{
+            transform: translateY(-25%);
+        }
+
+
 
     </style>
 </head>
 <body>
-<h1>My Friends</h1>
-<div id = "friendsList">
+<h1>Add Friends</h1>
+<div id = "potentialFriendsList">
 
 </div>
 </body>
@@ -63,8 +61,8 @@ error_reporting(E_ALL);
 
     function getFriendsList()
     {
-        $.get("get_friends_list.php", function(data){
-            $("#friendsList").html(data);
+        $.get("get_potential_friends_list.php", function(data){
+            $("#potentialFriendsList").html(data);
         });
     }
 
@@ -72,7 +70,3 @@ error_reporting(E_ALL);
     setInterval(getFriendsList, 5000);
 
 </script>
-
-
-
-
