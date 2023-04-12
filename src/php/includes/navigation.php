@@ -110,7 +110,15 @@ switch ($_SERVER["SCRIPT_NAME"]) {
 <div class="navbar">
     <a class="nav-link <?php if ($CURRENT_PAGE == "Home") {?>active<?php }?>" href="../views/home.php">Home</a>
     <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "friends") {?>active<?php }?>" href="../views/account/account.php">Friends</a>
-    <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../views/serverPage.php">Server</a>
+    <div class="dropdown">
+        <button class="dropbtn">Server v
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../views/serverPage.php">Server</a>
+            <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../views/newserver.php">Create Server</a>
+        </div>
+    </div>
     <div class="dropdown">
         <button class="dropbtn">Account v
             <i class="fa fa-caret-down"></i>
