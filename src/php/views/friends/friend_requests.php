@@ -17,7 +17,7 @@ error_reporting(E_ALL);
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        #friendsList {
+        #friendRequests {
             width: 75%;
             border: 4px solid black;
             border-radius: 4px;
@@ -25,7 +25,7 @@ error_reporting(E_ALL);
             background-color: #1e1f22;
         }
 
-        .friend{
+        .friendRequest{
             display: flex;
             justify-content: space-between;
             flex-direction: row;
@@ -34,23 +34,23 @@ error_reporting(E_ALL);
             width: 100%;
         }
 
-        #friendsList label{
+        #friendRequests label{
             display: inline-block;
         }
 
-        .friend button{
+        .friendRequest button{
             float: right;
         }
 
-      .friend button{
-          transform: translateY(-25%);
-      }
+        .friendRequest button{
+            transform: translateY(-25%);
+        }
 
     </style>
 </head>
 <body>
-<h1>My Friends</h1>
-<div id = "friendsList">
+<h1>My Friend Requests</h1>
+<div id = "friendRequests">
 
 </div>
 </body>
@@ -63,8 +63,8 @@ error_reporting(E_ALL);
 
     function getFriendsList()
     {
-        $.get("get_friends_list.php", function(data){
-            $("#friendsList").html(data);
+        $.get("get_friend_requests.php", function(data){
+            $("#friendRequests").html(data);
         });
     }
 

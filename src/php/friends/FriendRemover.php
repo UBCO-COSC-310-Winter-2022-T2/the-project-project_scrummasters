@@ -19,7 +19,7 @@ class FriendRemover
 
     public function removeFriend()
     {
-        $removeFriendSQL = "DELETE FROM friend WHERE (username1 = '$this->username' || username2 = '$this->username') AND (username1 = '$this->friendUsername' || username2 = '$this->friendUsername')";
+        $removeFriendSQL = "DELETE FROM friend WHERE (username1 = '$this->username' OR username2 = '$this->username') AND (username1 = '$this->friendUsername' OR username2 = '$this->friendUsername')";
         mysqli_query($this->dbConnection->getConnection(), $removeFriendSQL);
     }
 
