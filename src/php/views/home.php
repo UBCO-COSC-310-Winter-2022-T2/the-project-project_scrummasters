@@ -8,8 +8,6 @@ include("../includes/navigation.php");
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,4 +41,12 @@ include("../includes/navigation.php");
 </script>
 </body>
 </html>
+
+=======
+<style>
+    html, body{
+        background-color: #23272a;
+        color: #dddddd;
+    }
+</style>
 

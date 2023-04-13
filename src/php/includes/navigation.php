@@ -13,58 +13,124 @@ switch ($_SERVER["SCRIPT_NAME"]) {
 ?>
 
 <style>
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
+    /*ul {*/
+    /*    list-style-type: none;*/
+    /*    margin: 0;*/
+    /*    padding: 0;*/
+    /*    overflow: hidden;*/
+    /*    border: 3px solid #171a1c;*/
+    /*    background-color: #23272a;*/
+    /*}*/
+
+    /*li {*/
+    /*    float: left;*/
+    /*}*/
+
+    /*li a {*/
+    /*    display: block;*/
+    /*    color: white;*/
+    /*    text-align: center;*/
+    /*    padding: 14px 16px;*/
+    /*    text-decoration: none;*/
+    /*}*/
+
+    /*li a:hover:not(.active) {*/
+    /*    background-color: #ddd;*/
+    /*}*/
+
+    /*li a.active {*/
+    /*    color: white;*/
+    /*    background-color: #04AA6D;*/
+    /*}*/
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .navbar {
         overflow: hidden;
-        border: 3px solid #171a1c;
-        background-color: #23272a;
+        background-color: #333;
     }
 
-    li {
+    .navbar a {
         float: left;
-    }
-
-    li a {
-        display: block;
+        font-size: 16px;
         color: white;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
     }
 
-    li a:hover:not(.active) {
+    .dropdown {
+        float: left;
+        overflow: hidden;
+    }
+
+    .dropdown .dropbtn {
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+    }
+
+    .navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: red;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+    .dropdown-content a:hover {
         background-color: #ddd;
     }
 
-    li a.active {
-        color: white;
-        background-color: #04AA6D;
+    .dropdown:hover .dropdown-content {
+        display: block;
     }
 </style>
 
-<div class="container">
-
-    <ul "nav nav-pills">
-
-        <li class="nav-item">
-            <a class="nav-link <?php if ($CURRENT_PAGE == "Home") {?>active<?php }?>" href="../views/home.php">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "friends") {?>active<?php }?>" href="../views/friends/friends.php">Friends</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../views/account/account.php">Account</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../views/home.php">Server</a>
-        </li>
-        <li class="nav-item">
+<div class="navbar">
+    <a class="nav-link <?php if ($CURRENT_PAGE == "Home") {?>active<?php }?>" href="../views/home.php">Home</a>
+    <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "friends") {?>active<?php }?>" href="../views/account/account.php">Friends</a>
+    <div class="dropdown">
+        <button class="dropbtn">Server v
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../views/serverPage.php">Server</a>
+            <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../views/newserver.php">Create Server</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Account v
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../views/account/account.php">Edit Account</a>
             <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../auth/login/logout.php">Logout</a>
-        </li>
-
-    </ul>
+        </div>
+    </div>
 </div>
+
+
+
 
 
