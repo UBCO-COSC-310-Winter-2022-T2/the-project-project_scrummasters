@@ -97,18 +97,18 @@ echo ('<div id = "messages">');
 
 
     $(document).ready(function(){
-        function scrollToBottom()
-        {
+
+        function scrollToBottom() {
             $("#messages").scrollTop($("#messages").prop("scrollHeight"));
         }
+
         function displayServerMessages() {
             $.post("../server/displayServerMessages.php", {serverID:  <?php echo $serverID; ?> }, function(data){
                 $("#messages").html(data);
             });
         }
 
-        function displayServerMessagesAndScroll(callBack)
-        {
+        function displayServerMessagesAndScroll(callBack) {
             $.post("../server/displayServerMessages.php", {serverID:  <?php echo $serverID; ?> }, function(data){
                 $("#messages").html(data);
                 if(typeof callBack === "function") {
@@ -130,8 +130,20 @@ echo ('<div id = "messages">');
             }
         });
 
-        displayServerMessages();
-        setInterval(displayServerMessages, 5000);
+
+
+        function startMessageInterval() {
+            var messageInterval = parseInt(localStorage.getItem('messageInterval'));
+            if (!isNaN(messageInterval)) {
+                clearInterval(messageInterval);
+            }
+            displayServerMessages();
+            messageInterval = setInterval(displayServerMessages, 5000);
+            localStorage.setItem('messageInterval', messageInterval);
+        }
+
+        startMessageInterval();
+
     });
 
 
