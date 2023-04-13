@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-class serverMessageSender
+class ServerMessageSender
 {
     private $serverMessage;
     private $senderUsername;

@@ -1,6 +1,7 @@
 <?php
 
 
+session_start();
 class ServerMessagesGetter
 {
     private $serverID;

@@ -1,14 +1,16 @@
 <?php
 session_start();
-if (empty($_SESSION["username"]) || !isset($_GET['serverID'])) {
-    header("Location: ../views/loginform.php");
+if ($_SERVER["REQUEST_METHOD"]!="POST") {
+    header("Location: ../../html/badrequest.html");
     exit();
 }
 require_once '../db/dbConnection.php';
-$dbConnection = new dbConnection();
-$serverID = $_GET['serverID'];
-$username = $_SESSION['username'];
+require_once 'ServerLeaver.php';
 
-$sql = "DELETE FROM userinserver WHERE username =\"$username\" AND serverID = $serverID";
-$result = mysqli_query($dbConnection->getConnection(), $sql);
+$_SESSION["serverID"] = $_POST['serverID'];
+
+$serverLeaver = new ServerLeaver();
+$serverLeaver->leaveServer();
+unset($_SESSION["serverID"]);
+
 header("Location: ../views/home.php");
