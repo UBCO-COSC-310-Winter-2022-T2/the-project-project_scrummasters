@@ -34,7 +34,7 @@ include("../includes/navigation.php");
 
 <script>
     $(document).ready(function() {
-        $.get("../includes/serverList.php", function(data){
+        $.get("../server/serverList.php", function(data){
             $("#servers").html(data);
         });
     });

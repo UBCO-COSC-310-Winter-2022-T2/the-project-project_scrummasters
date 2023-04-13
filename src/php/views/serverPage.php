@@ -94,24 +94,34 @@ echo ('<div id = "messages">');
 
 
     $(document).ready(function(){
+        function scrollToBottom()
+        {
+            $("#messages").scrollTop($("#messages").prop("scrollHeight"));
+        }
         function displayServerMessages() {
             $.post("../server/displayServerMessages.php", {serverID:  <?php echo $serverID; ?> }, function(data){
                 $("#messages").html(data);
             });
         }
 
+        function displayServerMessagesAndScroll(callBack)
+        {
+            $.post("../server/displayServerMessages.php", {serverID:  <?php echo $serverID; ?> }, function(data){
+                $("#messages").html(data);
+                if(typeof callBack === "function") {
+                    callBack();
+                }
+            });
+
+        }
+
         $("#msgBox").on("keydown", function(event){
             if(event.key == "Enter") {
                 const serverMessage = $("#msgBox").val();
                 if(serverMessage!="") {
-                    $.post("../server/sendMessage.php", {
-                        serverID: <?php echo $serverID ?>,
-                        serverMessage: serverMessage
-                    }, function (data) {
-                        displayServerMessages();
+                    $.post("../server/sendMessage.php", {serverID: <?php echo $serverID ?>, serverMessage: serverMessage}, function (data) {
+                        displayServerMessagesAndScroll(scrollToBottom);
                         $("#msgBox").val("");
-
-                        $("#messages").scrollTop($("#messages").prop("scrollHeight"));
                     });
                 }
             }
