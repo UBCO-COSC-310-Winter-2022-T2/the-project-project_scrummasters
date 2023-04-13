@@ -7,12 +7,14 @@ Class ServerCreator{
     {
         session_start();
         $dbConnection =  new dbConnection();
+        $sqli = $dbConnection->getConnection();
         $user_name = $_SESSION["username"];
         $server_name = $_POST["serverName"];
         $sql = "INSERT INTO discordserver(adminUsername, serverName) VALUES('$user_name','$server_name')";
-        $result = mysqli_query($dbConnection->getConnection(), $sql);
+        mysqli_query($sqli, $sql);
+        return $sqli->insert_id;
     }
-    public static function is_taken(){
+    public static function is_taken(){ // remove this if server names are not unique
         $dbConnection =  new dbConnection();
         $server_name = $_POST["serverName"];
         $sql = "SELECT serverName FROM discordserver WHERE serverName = '$server_name'";

@@ -23,13 +23,13 @@ else{ header("Location: ../../html/loginform.php");}?>
         <div class = "input-field">
             <label>Server Name: </label>
             <br>
-            <?php
-            if(!empty($_SESSION["server_err"])) {
-                $server_name = $_SESSION["server_err"];
-                echo "<p class = \"err\" style = \"color: red\"> The email \"$server_name\" already exists </p>";
-                unset($_SESSION["server_err"]);
-            }
-            ?>
+<!--            --><?php
+//            if(!empty($_SESSION["server_err"])) {
+//                $server_name = $_SESSION["server_err"];
+//                echo "<p class = \"err\" style = \"color: red\"> The email \"$server_name\" already exists </p>";
+//                unset($_SESSION["server_err"]);
+//            }
+//            ?>
             <input type = "text" name = "serverName" placeholder = "Server Name" required>
         </div>
         <button>Create Server</button>
