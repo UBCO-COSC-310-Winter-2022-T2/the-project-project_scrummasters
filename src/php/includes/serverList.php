@@ -1,7 +1,5 @@
 <style>
-    .vertical-menu {
-        width: 100px;
-    }
+
 
     .vertical-menu li {
         background-color: #23272a;
@@ -24,19 +22,27 @@
         font-size: 16px;
     }
 
+    button:hover{
+        cursor: pointer;
+    }
+
     .vertical-menu li:hover {
         background-color: #ccc;
     }
 
 </style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <?php
 
 
 // Connect to your MySQL database
 
+session_start();
 if(empty($_SESSION["username"]))
 {
-    header("Location: ../loginform.php");
+    header("Location: ../views/loginform.php");
     exit();
 }
 
@@ -49,7 +55,7 @@ $connection = $dbConnection->getConnection();
 
 
 // Query your database
-$sql = "SELECT * FROM userinserver WHERE username = \"$username\"";
+$sql = "SELECT * FROM userInServer JOIN discordServer USING(serverID) WHERE username = \"$username\"";
 
 $result = mysqli_query($connection, $sql);
 
@@ -66,9 +72,12 @@ if ($result && $result->num_rows > 0) {
 
 
         // Create the link using the value
+?>
 
-        echo '<li><a href="../views/serverPage.php?serverID='.$linkValue.' " target="_self"><button>'.$linkValue.'</button></a></li>';
+     <li><button serverID = <?php echo $linkValue; ?>> <?php echo $row["serverName"]; ?> </button></a></li>
+<?php
     }
+
 
     // Free the result set
     $result->free();
@@ -80,6 +89,15 @@ echo("</ul></div>");
 // Close the database connection
 
 ?>
-</body>
-</html>
+
+<script>
+
+    $("button").on("click", function(){
+    const serverID = $(this).attr("serverID");
+    $.get("../views/serverPage.php", {serverID: serverID}, function(data){
+        $("#content").html(data);
+    });
+    });
+</script>
+
 
