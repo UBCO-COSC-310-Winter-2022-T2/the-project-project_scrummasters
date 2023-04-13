@@ -1,7 +1,5 @@
 <style>
-    .vertical-menu {
-        width: 100px;
-    }
+
 
     .vertical-menu li {
         background-color: #23272a;
@@ -24,19 +22,34 @@
         font-size: 16px;
     }
 
+    button:hover{
+        cursor: pointer;
+    }
+
+    .leaveServer{
+        background-color: red;
+    }
     .vertical-menu li:hover {
         background-color: #ccc;
     }
 
+    .vertical-menu form{
+        display: inline;
+    }
+
 </style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <?php
 
 
 // Connect to your MySQL database
 
+session_start();
 if(empty($_SESSION["username"]))
 {
-    header("Location: ../loginform.php");
+    header("Location: ../views/loginform.php");
     exit();
 }
 
@@ -49,7 +62,7 @@ $connection = $dbConnection->getConnection();
 
 
 // Query your database
-$sql = "SELECT * FROM userinserver WHERE username = \"$username\"";
+$sql = "SELECT * FROM userInServer JOIN discordServer USING(serverID) WHERE username = \"$username\"";
 
 $result = mysqli_query($connection, $sql);
 
@@ -62,13 +75,24 @@ if ($result && $result->num_rows > 0) {
     // Loop through each row in the result
     while ($row = $result->fetch_assoc()) {
         // Get the value of the column you want to use for the link
-        $linkValue = $row['serverID'];
+        $serverID = $row['serverID'];
 
 
         // Create the link using the value
+?>
 
-        echo '<li><a href="../views/serverPage.php?serverID='.$linkValue.' " target="_self"><button>'.$linkValue.'</button></a></li>';
+     <li>
+         <button class = "server" serverID = <?php echo $serverID; ?>> <?php echo $row["serverName"]; ?> </button>
+
+         <form method = "post" action = "../server/leaveServer.php">
+             <input type = "hidden" name = "serverID" value = "<?php echo $serverID; ?>" >
+         <button class = "leaveServer">Leave</button>
+         </form>
+     </li>
+
+<?php
     }
+
 
     // Free the result set
     $result->free();
@@ -80,6 +104,17 @@ echo("</ul></div>");
 // Close the database connection
 
 ?>
-</body>
-</html>
+
+<script>
+
+    $(".server").on("click", function(){
+    const serverID = $(this).attr("serverID");
+    $.get("../views/serverPage.php", {serverID: serverID}, function(data){
+        $("#content").html(data);
+    });
+    });
+
+
+</script>
+
 

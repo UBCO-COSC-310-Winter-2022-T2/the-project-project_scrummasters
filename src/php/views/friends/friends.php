@@ -7,7 +7,7 @@ if(empty($_SESSION["username"]))
     exit();
 }
 
-
+include("../../includes/navigation.php");
 ?>
 
 <!DOCTYPE html>
