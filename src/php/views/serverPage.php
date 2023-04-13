@@ -22,10 +22,13 @@
 //check if they are logged in
 session_start();
 if (empty($_SESSION["username"])) {
-    header("Location: ../loginform.php");
+    header("Location: ../views/loginform.php");
     exit();
 }
 //get server id from the link
+if(!isset($_GET['serverID'])){
+    header("Location: ../views/home.php");
+}
 $serverID = $_GET['serverID'];
 require_once '../server/serverInfoGetter.php';
 
