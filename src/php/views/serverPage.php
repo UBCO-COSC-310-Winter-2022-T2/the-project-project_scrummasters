@@ -100,8 +100,24 @@ echo ('<div id = "messages">');
             });
         }
 
-        displayServerMessages();
+        $("#msgBox").on("keydown", function(event){
+            if(event.key == "Enter") {
+                const serverMessage = $("#msgBox").val();
+                if(serverMessage!="") {
+                    $.post("../server/sendMessage.php", {
+                        serverID: <?php echo $serverID ?>,
+                        serverMessage: serverMessage
+                    }, function (data) {
+                        displayServerMessages();
+                        $("#msgBox").val("");
 
+                        $("#messages").scrollTop($("#messages").prop("scrollHeight"));
+                    });
+                }
+            }
+        });
+
+        displayServerMessages();
         setInterval(displayServerMessages, 5000);
     });
 

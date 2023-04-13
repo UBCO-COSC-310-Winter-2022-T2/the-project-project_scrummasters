@@ -32,6 +32,8 @@ if ($serverMessages && $serverMessages->num_rows > 0) {
 }
 else echo("BE THE FIRST ONE TO SEND A MESSAGE");
 
+unset($_SESSION["serverID"]);
+
 ?>
 
 <script>
