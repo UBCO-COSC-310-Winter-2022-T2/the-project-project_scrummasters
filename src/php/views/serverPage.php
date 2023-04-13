@@ -69,28 +69,11 @@ $serverInfoGetter = new serverInfoGetter($serverID);
 $_POST["serverID"] = $serverID;
 $connection = $serverInfoGetter->connection;
 
-//sql to get all messages from the especific server
-$sql = 'SELECT * FROM servermessage WHERE serverID = ' . $serverID . ' ';
-$result = mysqli_query($connection, $sql);
+
+
 echo('<div class="vertical-menu">');
 echo ('<div id = "messages">');
-if ($result && $result->num_rows > 0) {
-    // Loop through each row in the result
-    while ($row = $result->fetch_assoc()) {
-        // Get the value of the column you want to use for the link
-        $messageID = $row['serverMessageID'];
-        $message = $row['serverMessage'];
-        $senderUsername = $row['senderUsername'];
 
-        echo ('<div class = "message">');
-        echo('<p class = "senderUsername">'. $senderUsername. '</p>');
-        echo('<p class = "msgText">'. $message .'</p>');
-        echo('</div>');
-        echo ('<br>');
-
-
-
-    }
     echo ('</div>');
     ?>
 
@@ -101,33 +84,27 @@ if ($result && $result->num_rows > 0) {
 
     </div>
 
-<?php
-    // Free the result set
-    $result->free();
-} else
-    echo "BE THE FIRST ONE TO SEND A MESSAGE!";
-?>
+
 
 
 
 </body>
 
 <script>
+
+
     $(document).ready(function(){
-        $(".msgText").filter(function(){
-            var msgTextSplit = $(this).text().split(" ");
-            console.log(msgTextSplit[0]);
-            for(let i=0; i<msgTextSplit.length; i++)
-            {
-                if(msgTextSplit[i] == "@<?php echo $username; ?>")
-                {
-                    console.log(msgTextSplit[0]+" is true");
-                    return true;
-                }
-            }
-            return false;
-        }).css("color", "gold");
-    })
+        function displayServerMessages() {
+            $.post("../server/displayServerMessages.php", {serverID:  <?php echo $serverID; ?> }, function(data){
+                $("#messages").html(data);
+            });
+        }
+
+        displayServerMessages();
+
+        setInterval(displayServerMessages, 5000);
+    });
+
 
 
 </script>
