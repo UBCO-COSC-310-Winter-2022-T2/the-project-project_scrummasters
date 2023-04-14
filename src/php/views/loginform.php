@@ -6,6 +6,17 @@ if (session_status() != PHP_SESSION_ACTIVE) {session_start();} ?>
     <title>Log In</title>
     <link rel="stylesheet" href="../../css/auth.css">
     <link rel="stylesheet" href="../../css/buttons.css">
+    <style>
+        .signup{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .signup p{
+            color: white;
+        }
+    </style>
 </head>
 <body>
 
@@ -34,6 +45,9 @@ if (session_status() != PHP_SESSION_ACTIVE) {session_start();} ?>
   <input type = "password" name = "password" placeholder = "Enter your password here" required>
     </div>
   <button>Log In</button>
+    <div class = "signup">
+    <a href = "signupform.php" ><p>Don't have an account?</p></a>
+        <div>
 </form>
 </div>
 
