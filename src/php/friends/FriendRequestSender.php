@@ -11,7 +11,7 @@ class FriendRequestSender
 
     public function __construct()
     {
-        session_start();
+        if (session_status() != PHP_SESSION_ACTIVE) {session_start();}
         $this->username = $_SESSION["username"];
         $this->potentialFriendUsername = $_SESSION["potentialFriendUsername"];
 

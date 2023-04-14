@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+if (session_status() != PHP_SESSION_ACTIVE) {session_start();}
 class ServerMessageSender
 {
     private $serverMessage;

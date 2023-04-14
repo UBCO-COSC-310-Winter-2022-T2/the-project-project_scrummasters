@@ -46,7 +46,7 @@
 
 // Connect to your MySQL database
 
-session_start();
+if (session_status() != PHP_SESSION_ACTIVE) {session_start();}
 if(empty($_SESSION["username"]))
 {
     header("Location: ../views/loginform.php");

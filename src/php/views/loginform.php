@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php session_start() ?>
+if (session_status() != PHP_SESSION_ACTIVE) {session_start();} ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

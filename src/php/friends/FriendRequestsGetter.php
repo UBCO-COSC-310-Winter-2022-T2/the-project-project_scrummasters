@@ -8,7 +8,7 @@ class FriendRequestsGetter
 
     public function __construct()
     {
-        session_start();
+        if (session_status() != PHP_SESSION_ACTIVE) {session_start();}
         require_once '../../db/dbConnection.php';
         $this->dbConnection = new dbConnection();
         $this->username = $_SESSION["username"];

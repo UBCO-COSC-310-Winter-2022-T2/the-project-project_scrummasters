@@ -33,7 +33,7 @@ class SignUpFormValidator
 
         if($row = mysqli_fetch_assoc($result))
         {
-            session_start();
+            if (session_status() != PHP_SESSION_ACTIVE) {session_start();}
             $_SESSION["email_err"] = $this->email;
             return true;
         }
@@ -47,7 +47,7 @@ class SignUpFormValidator
 
         if($row = mysqli_fetch_assoc($result))
         {
-            session_start();
+            if (session_status() != PHP_SESSION_ACTIVE) {session_start();}
             $_SESSION["phone_err"] = $this->phoneNumber;
             return true;
         }
@@ -63,7 +63,7 @@ class SignUpFormValidator
 
         if($row = mysqli_fetch_assoc($result))
         {
-            session_start();
+            if (session_status() != PHP_SESSION_ACTIVE) {session_start();}
             $_SESSION["user_err"] = $this->username;
             return true;
         }

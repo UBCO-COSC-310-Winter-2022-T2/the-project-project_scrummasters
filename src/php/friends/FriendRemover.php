@@ -12,7 +12,7 @@ class FriendRemover
 
         $this->dbConnection = new dbConnection();
 
-        session_start();
+        if (session_status() != PHP_SESSION_ACTIVE) {session_start();}
         $this->username = $_SESSION["username"];
         $this->friendUsername = $_SESSION["friendUsername"];
     }

@@ -5,7 +5,7 @@ require_once('../db/dbConnection.php');
 Class ServerCreator{
     public static function add_server()
     {
-        session_start();
+        if (session_status() != PHP_SESSION_ACTIVE) {session_start();}
         $dbConnection =  new dbConnection();
         $sqli = $dbConnection->getConnection();
         $user_name = $_SESSION["username"];
@@ -22,7 +22,7 @@ Class ServerCreator{
 
         if($row = mysqli_fetch_assoc($result))
         {
-            session_start();
+            if (session_status() != PHP_SESSION_ACTIVE) {session_start();}
             $_SESSION["server_err"] = $server_name;
             return true;
         }
