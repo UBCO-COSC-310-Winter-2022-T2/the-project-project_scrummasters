@@ -2,7 +2,8 @@ CREATE DATABASE discord;
 USE discord;
 
 CREATE TABLE discordUser(
-username varchar(50) PRIMARY KEY ,
+userID int AUTO_INCREMENT PRIMARY KEY,
+username varchar(50) UNIQUE NOT NULL ,
 password varchar(50),
 firstName varchar(50),
 phoneNumber varChar(50),

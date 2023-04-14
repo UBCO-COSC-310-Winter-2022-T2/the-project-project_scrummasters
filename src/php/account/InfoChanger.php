@@ -37,10 +37,6 @@ class InfoChanger
 
     public function changeInfo()
     {
-        $allowedParams = ['firstName', 'lastName', 'email', 'phoneNumber', 'username', 'password'];
-        if (!in_array($this->param, $allowedParams)) {
-            throw new InvalidArgumentException("Invalid parameter: {$this->param}");
-        }
 
         $changeUniqueInfo = "UPDATE discordUser SET `$this->param` = '$this->value' WHERE username ='$this->username'";
        return mysqli_query($this->dbConnection->getConnection(), $changeUniqueInfo);

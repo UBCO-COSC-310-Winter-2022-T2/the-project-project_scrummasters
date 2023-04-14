@@ -34,8 +34,12 @@ if(empty($_SESSION["username"]))
     });
 
     $("#submit-change").on("click", function(){
+        $("#err_msg").html("");
+
         const param = "<?php echo $_POST["param"]; ?>";
         const newValue = $("#newValue").val();
+
+
         const pw = $("#pw").val();
         const kind = "<?php echo $_POST["kind"];?>";
 
