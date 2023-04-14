@@ -160,6 +160,15 @@ class phpUnitTest extends TestCase
     {
         $this->assertTrue(true);
     }
+    public function testCreateServer()
+    {
+        require_once '../server/ServerCreator.php';
+        $_POST["serverName"] = "testServer";
+
+        $serverCreator = new ServerCreator();
+        $server_id = $serverCreator::add_server();
+        $this->assertTrue($server_id != null);
+    }
 
 
 }
