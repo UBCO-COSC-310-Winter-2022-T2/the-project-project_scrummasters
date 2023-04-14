@@ -18,4 +18,5 @@ if($result1->num_rows>0){
 //insert the user into the server
 $sql = "INSERT INTO userinserver(username, serverID) VALUES (\"$username\", $serverID)";
 $result = mysqli_query($dbConnection->getConnection(), $sql);
-header("Location: ../views/serverPage.php?serverID=$serverID");
+header("Location: ../views/home.php");
+?>
