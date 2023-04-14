@@ -34,8 +34,17 @@
   <input type = "password" name = "password" placeholder = "Enter your password here" required>
     </div>
   <button>Log In</button>
+  
 </form>
+<button id = "forgotPassBtn">Forgot Password</button>
+  
 </div>
 
 </body>
 </html>
+
+<script>
+  document.getElementById("forgotPassBtn").addEventListener("click", function() {
+    window.location.href = "../../html/forgotPassword_enter_username.html";
+  });
+</script>
