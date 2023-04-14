@@ -1,7 +1,7 @@
 <?php
 
 
-session_start();
+if (session_status() != PHP_SESSION_ACTIVE) {session_start();}
 if(empty($_SESSION["username"])) {
     header("Location: ../loginform.php");
     exit();

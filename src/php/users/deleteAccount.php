@@ -2,7 +2,7 @@
 require_once '../db/dbConnection.php';
 $dbConnection = new dbConnection();
 $connection = $dbConnection->getConnection();
-session_start();
+if (session_status() != PHP_SESSION_ACTIVE) {session_start();}
 if(!empty($_SESSION['username'])){
     $currentUsername = $_SESSION['username'];
     $sql = "Delete from discordUser where username = '$currentUsername'";

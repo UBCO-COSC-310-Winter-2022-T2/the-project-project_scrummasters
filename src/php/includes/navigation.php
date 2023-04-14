@@ -106,17 +106,17 @@ switch ($_SERVER["SCRIPT_NAME"]) {
         display: block;
     }
 </style>
-
+<?php $currentPage = basename($_SERVER['PHP_SELF']); ?>
 <div class="navbar">
-    <a class="nav-link <?php if ($CURRENT_PAGE == "Home") {?>active<?php }?>" href="../../views/home.php">Home</a>
-    <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "friends") {?>active<?php }?>" href="../views/friends/friends.php">Friends</a>
+    <a class="nav-link" <?php if ($currentPage == "home.php") { echo('href="home.php"'); } else{ echo('href="../../views/home.php"');}?> >Home</a>
+    <a class="nav-link" <?php if ($currentPage == "friends.php") { echo('href="friends.php"'); } else{ echo('href="../views/friends/friends.php"');}?> >Friends</a>
     <div class="dropdown">
         <button class="dropbtn">Server v
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../views/serverPage.php">Server</a>
-            <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../views/newserver.php">Create Server</a>
+            <a class="nav-link" <?php if ($currentPage == "friends.php") { echo('href="../../views/newserver.php"'); } else{ echo('href="../views/newserver.php"');}?> >Create Server</a>
+
         </div>
     </div>
     <div class="dropdown">
@@ -124,8 +124,8 @@ switch ($_SERVER["SCRIPT_NAME"]) {
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../views/account/account.php">Edit Account</a>
-            <a class="nav-link <?php if ($GLOBALS["CURRENT_PAGE"] == "AddFriends") {?>active<?php }?>" href="../auth/login/logout.php">Logout</a>
+            <a class="nav-link" <?php if ($currentPage == "friends.php") { echo('href="../../views/account/account.php"'); } else{ echo('href="../views/account/account.php"');}?> >Edit Account</a>
+            <a class="nav-link" <?php if ($currentPage == "friends.php") { echo('href="../../auth/login/logout.php"'); } else{ echo('href="../auth/login/logout.php"');}?> >logOutTRY</a>
         </div>
     </div>
 </div>

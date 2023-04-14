@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"] != "POST")
     exit();
 }
 
-session_start();
+if (session_status() != PHP_SESSION_ACTIVE) {session_start();}
 require_once '../db/dbConnection.php';
 $param =  $_POST["param"];
 $username = $_SESSION["username"];

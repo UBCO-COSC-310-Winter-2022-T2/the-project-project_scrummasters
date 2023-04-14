@@ -8,7 +8,7 @@ class FriendRequestChecker
 
     public function __construct()
     {
-        session_start();
+        if (session_status() != PHP_SESSION_ACTIVE) {session_start();}
         $this->username = $_SESSION["username"];
 
         require_once '../../db/dbConnection.php';

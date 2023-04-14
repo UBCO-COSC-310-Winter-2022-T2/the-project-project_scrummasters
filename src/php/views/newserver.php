@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<?php session_start();
+<?php
+if (session_status() != PHP_SESSION_ACTIVE) {session_start();}
 if(!empty($_SESSION["username"])) {
     require_once("../includes/navigation.php");
 }
