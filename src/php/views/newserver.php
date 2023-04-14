@@ -1,10 +1,15 @@
+
+
 <!DOCTYPE html>
 <?php
 if (session_status() != PHP_SESSION_ACTIVE) {session_start();}
-if(!empty($_SESSION["username"])) {
-    require_once("../includes/navigation.php");
+if(empty($_SESSION["username"])) {
+    header("Location: ../../html/loginform.php");
+    exit();
 }
-else{ header("Location: ../../html/loginform.php");}?>
+
+
+?>
 <!--<html lang="en">-->
 <head>
     <meta charset="UTF-8">
@@ -15,6 +20,9 @@ else{ header("Location: ../../html/loginform.php");}?>
 
 </head>
 <body>
+<header>
+
+</header>
 
 <div class = "auth-form">
     <h1 class = "auth-form-title"> Add Server</h1>
@@ -38,4 +46,5 @@ else{ header("Location: ../../html/loginform.php");}?>
 </div>
 
 </body>
+
 <!--</html>-->
