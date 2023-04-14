@@ -107,17 +107,27 @@ switch ($_SERVER["SCRIPT_NAME"]) {
     }
 
 </style>
-<?php $currentPage = basename($_SERVER['PHP_SELF']); ?>
+<?php $currentPage = basename($_SERVER['PHP_SELF']);
+
+$request_uri = $_SERVER["REQUEST_URI"];
+$substring = "/DiscordClone/src/php";
+
+$position = strpos($request_uri, $substring);
+
+$result = substr($request_uri, 0, $position + strlen($substring));
+
+
+
+?>
 <div class="navbar">
-    <a class="nav-link" <?php if ($currentPage == "home.php") { echo('href="home.php"'); } else{ echo('href="../../views/home.php"');}?> >Home</a>
-    <a class="nav-link" <?php if ($currentPage == "friends.php") { echo('href="friends.php"'); } else{ echo('href="../views/friends/friends.php"');}?> >Friends</a>
+    <a class="nav-link" href = "<?php echo $result.'/views/home.php';?>" >Home</a>
+    <a class="nav-link" href = "<?php echo $result.'/views/friends/friends.php' ?>>" >Friends</a>
     <div class="dropdown">
         <button class="dropbtn">Server v
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a class="nav-link" <?php if ($currentPage == "friends.php") { echo('href="../../views/newserver.php"'); } else{ echo('href="../views/newserver.php"');}?> >Create Server</a>
-
+            <a class="nav-link" href = "<?php echo $result.'/views/newserver.php'; ?>" >Create Server</a>
         </div>
     </div>
     <div class="dropdown">
@@ -125,8 +135,8 @@ switch ($_SERVER["SCRIPT_NAME"]) {
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a class="nav-link" <?php if ($currentPage == "friends.php") { echo('href="../../views/account/account.php"'); } else{ echo('href="../views/account/account.php"');}?> >Edit Account</a>
-            <a class="nav-link" <?php if ($currentPage == "friends.php") { echo('href="../../auth/login/logout.php"'); } else{ echo('href="../auth/login/logout.php"');}?> >Log Out</a>
+            <a class="nav-link" href = "<?php echo $result.'/views/account/account.php'; ?>">Edit Account</a>
+            <a class="nav-link" href = "<?php echo $result.'/auth/login/logout.php'; ?>" >Log Out</a>
         </div>
     </div>
 </div>
