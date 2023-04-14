@@ -104,6 +104,7 @@ if ($result && $result->num_rows > 0) {
          <form method = "post" action = "../server/leaveServer.php">
              <input type = "hidden" name = "serverID" value = "<?php echo $serverID; ?>" >
          <button class = "leaveServer">Leave</button>
+         </form>
 
              <?php
 
