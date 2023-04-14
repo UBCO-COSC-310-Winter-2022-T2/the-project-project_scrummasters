@@ -12,7 +12,7 @@ $username = $_SESSION['username'];
 $sql1 = "SELECT * FROM userinserver WHERE username=\"$username\" AND serverID=$serverID";
 $result1 = mysqli_query($dbConnection->getConnection(), $sql1);
 if($result1->num_rows>0){
-    header("Location: ../views/serverPage.php?serverID=$serverID");
+    header("Location: ../views/home.php");
 }
 
 //insert the user into the server
