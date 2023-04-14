@@ -68,6 +68,7 @@ $connection = $dbConnection->getConnection();
 // Query your database
 $sql = "SELECT * FROM userInServer JOIN discordServer USING(serverID) WHERE username = \"$username\"";
 
+
 $result = mysqli_query($connection, $sql);
 
 
@@ -78,8 +79,13 @@ echo("<ul>");
 if ($result && $result->num_rows > 0) {
     // Loop through each row in the result
     while ($row = $result->fetch_assoc()) {
+        $isAdmin = false;
         // Get the value of the column you want to use for the link
         $serverID = $row['serverID'];
+        $sql2 = "SELECT * FROM discordServer WHERE serverID=$serverID";
+        $result2 = mysqli_query($connection, $sql2);
+        $row2 = $result2->fetch_assoc();
+        if($row2['adminUsername'] == $username){$isAdmin = true;}
         $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http");
         $domain = $_SERVER['HTTP_HOST'];
         $path = $_SERVER['REQUEST_URI'];
@@ -91,12 +97,23 @@ if ($result && $result->num_rows > 0) {
 ?>
 
      <li>
+
          <button class = "inviteLink" link = " <?php echo $current_directory_url; ?> ">Invite Link</button>
          <button class = "server" serverID = <?php echo $serverID; ?>> <?php echo $row["serverName"]; ?> </button>
 
          <form method = "post" action = "../server/leaveServer.php">
              <input type = "hidden" name = "serverID" value = "<?php echo $serverID; ?>" >
          <button class = "leaveServer">Leave</button>
+
+             <?php
+
+             if($isAdmin==true){
+                 echo '<form method = "post" action = "../server/deleteServer.php">';
+                 echo '<input type = "hidden" name = "deleteServerID" value = "'. $serverID .'">';
+                 echo '<button class = "leaveServer"> Delete Server</button>';
+
+             }
+             ?>
          </form>
      </li>
 
