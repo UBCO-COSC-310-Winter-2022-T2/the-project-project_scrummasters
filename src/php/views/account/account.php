@@ -6,7 +6,7 @@ if(empty($_SESSION["username"]))
     header("Location: ../loginform.php");
     exit();
 }
-
+include ('../../includes/navigation.php');
 
 ?>
 
