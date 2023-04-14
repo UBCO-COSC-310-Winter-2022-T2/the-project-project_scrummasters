@@ -43,68 +43,69 @@ switch ($_SERVER["SCRIPT_NAME"]) {
     /*    background-color: #04AA6D;*/
     /*}*/
     body {
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: Arial, Helvetica, sans-serif !important;
     }
 
     .navbar {
-        overflow: hidden;
-        background-color: #333;
+        overflow: hidden !important;
+        background-color: #333 !important;
     }
 
     .navbar a {
-        float: left;
-        font-size: 16px;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
+        float: left !important;
+        font-size: 16px !important;
+        color: white !important;
+        text-align: center !important;
+        padding: 14px 16px !important;
+        text-decoration: none !important;
     }
 
     .dropdown {
-        float: left;
-        overflow: hidden;
+        float: left !important;
+        overflow: hidden !important;
     }
 
     .dropdown .dropbtn {
-        font-size: 16px;
-        border: none;
-        outline: none;
-        color: white;
-        padding: 14px 16px;
-        background-color: inherit;
-        font-family: inherit;
-        margin: 0;
+        font-size: 16px !important;
+        border: none !important;
+        outline: none !important;
+        color: white !important;
+        padding: 14px 16px !important;
+        background-color: inherit !important;
+        font-family: inherit !important;
+        margin: 0 !important;
     }
 
     .navbar a:hover, .dropdown:hover .dropbtn {
-        background-color: red;
+        background-color: red !important;
     }
 
     .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
+        display: none !important;
+        position: absolute !important;
+        background-color: #f9f9f9 !important;
+        min-width: 160px !important;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2) !important;
+        z-index: 1 !important;
     }
 
     .dropdown-content a {
-        float: none;
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
+        float: none !important;
+        color: black !important;
+        padding: 12px 16px !important;
+        text-decoration: none !important;
+        display: block !important;
+        text-align: left !important;
     }
 
     .dropdown-content a:hover {
-        background-color: #ddd;
+        background-color: #ddd !important;
     }
 
     .dropdown:hover .dropdown-content {
-        display: block;
+        display: block !important;
     }
+
 </style>
 <?php $currentPage = basename($_SERVER['PHP_SELF']); ?>
 <div class="navbar">

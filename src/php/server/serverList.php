@@ -86,6 +86,7 @@ if ($result && $result->num_rows > 0) {
         $result2 = mysqli_query($connection, $sql2);
         $row2 = $result2->fetch_assoc();
         if($row2['adminUsername'] == $username){$isAdmin = true;}
+
         $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http");
         $domain = $_SERVER['HTTP_HOST'];
         $path = $_SERVER['REQUEST_URI'];
