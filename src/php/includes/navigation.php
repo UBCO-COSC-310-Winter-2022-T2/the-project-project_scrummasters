@@ -125,7 +125,7 @@ switch ($_SERVER["SCRIPT_NAME"]) {
         </button>
         <div class="dropdown-content">
             <a class="nav-link" <?php if ($currentPage == "friends.php") { echo('href="../../views/account/account.php"'); } else{ echo('href="../views/account/account.php"');}?> >Edit Account</a>
-            <a class="nav-link" <?php if ($currentPage == "friends.php") { echo('href="../../auth/login/logout.php"'); } else{ echo('href="../auth/login/logout.php"');}?> >logOutTRY</a>
+            <a class="nav-link" <?php if ($currentPage == "friends.php") { echo('href="../../auth/login/logout.php"'); } else{ echo('href="../auth/login/logout.php"');}?> >Log Out</a>
         </div>
     </div>
 </div>
