@@ -37,6 +37,10 @@
         display: inline;
     }
 
+    .inviteLink{
+        background-color: orange;
+    }
+
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -76,12 +80,18 @@ if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         // Get the value of the column you want to use for the link
         $serverID = $row['serverID'];
+        $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http");
+        $domain = $_SERVER['HTTP_HOST'];
+        $path = $_SERVER['REQUEST_URI'];
+        $dir = dirname($path);
 
+        $current_directory_url = $protocol . "://" . $domain . $dir . (substr($dir, -1) == '/' ? '' : '/')."joinServer.php?serverID=".$serverID;
 
         // Create the link using the value
 ?>
 
      <li>
+         <button class = "inviteLink" link = " <?php echo $current_directory_url; ?> ">Invite Link</button>
          <button class = "server" serverID = <?php echo $serverID; ?>> <?php echo $row["serverName"]; ?> </button>
 
          <form method = "post" action = "../server/leaveServer.php">
@@ -97,7 +107,7 @@ if ($result && $result->num_rows > 0) {
     // Free the result set
     $result->free();
 } else {
-    echo "No results found.";
+    echo "You are currently not in any server";
 }
 echo("</ul></div>");
 
@@ -113,6 +123,16 @@ echo("</ul></div>");
         $("#content").html(data);
     });
     });
+
+    $(".inviteLink").on("click", function(){
+        const link = $(this).attr("link");
+        const tempElement = $("<textarea>");
+        $("body").append(tempElement);
+        tempElement.val(link).select();
+        document.execCommand('copy');
+        alert("Link copied to clipboard")
+
+    })
 
 
 </script>
