@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"] != "POST") {
 
 
 $_SESSION["serverID"] = $_POST["serverID"];
-$_SESSION["serverMessage"] = $_POST["serverMessage"];
+$_SESSION["serverMessage"] = addslashes($_POST["serverMessage"]);
 
 $serverMessageSender = new ServerMessageSender();
 $serverMessageSender->sendMessage();

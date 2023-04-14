@@ -10,7 +10,7 @@ require_once 'DirectMessageSender.php';
 
 
 $_SESSION["friendUsername"] = $_POST["friendUsername"];
-$_SESSION["directMessage"] = $_POST["directMessage"];
+$_SESSION["directMessage"] = addslashes($_POST["directMessage"]);
 
 echo $_SESSION["friendUsername"];
 
