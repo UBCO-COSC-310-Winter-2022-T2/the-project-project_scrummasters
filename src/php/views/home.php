@@ -35,6 +35,10 @@ include("../includes/navigation.php");
         $.get("../server/serverList.php", function(data){
             $("#servers").html(data);
         });
+
+        $.get("../directMessage/friendsList_home.php", function(data){
+            $("#friends").html(data);
+        });
     });
 
 
@@ -42,11 +46,15 @@ include("../includes/navigation.php");
 </body>
 </html>
 
-=======
 <style>
     html, body{
         background-color: #23272a;
         color: #dddddd;
+    }
+
+    #friends{
+        display: flex;
+        justify-content: center;
     }
 </style>
 
