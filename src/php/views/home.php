@@ -57,5 +57,9 @@ include("../includes/navigation.php");
         justify-content: center;
         border: 4px solid black;
     }
+    
+    #content{
+        border: 4px solid black;
+    }
 </style>
 
