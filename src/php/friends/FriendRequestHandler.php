@@ -23,13 +23,13 @@ class FriendRequestHandler
     public function declineFriendRequest()
     {
         $deleteFriendRequestSQL = "DELETE FROM friendRequest WHERE username1 = '$this->friendUsername' AND username2 = '$this->username'";
-        mysqli_query($this->dbConnection->getConnection(), $deleteFriendRequestSQL);
+        return mysqli_query($this->dbConnection->getConnection(), $deleteFriendRequestSQL);
     }
     public function acceptFriendRequest()
     {
         $this->declineFriendRequest(); // Must delete the friend request first before adding as friend
         $addFriendSQL = "INSERT INTO friend VALUES ('$this->username', '$this->friendUsername')";
-        mysqli_query($this->dbConnection->getConnection(),$addFriendSQL);
+        return mysqli_query($this->dbConnection->getConnection(),$addFriendSQL);
         //Delete the friend request first
 
     }

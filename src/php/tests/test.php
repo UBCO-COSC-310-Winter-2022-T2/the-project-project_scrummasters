@@ -167,9 +167,124 @@ class phpUnitTest extends TestCase
 
         $serverCreator = new ServerCreator();
         $server_id = $serverCreator::add_server();
-        $this->assertTrue($server_id != null);
+
+
+        $this->assertTrue($server_id != null && $server_id!= '');
     }
 
+    public function testLeaveServer()
+    {
+        require_once '../server/ServerCreator.php';
+        $_POST["serverName"] = "testServer";
+        $serverCreator = new ServerCreator();
+        $server_id = $serverCreator::add_server();
+
+        require_once '../server/ServerLeaver.php';
+        $serverLeaver = new ServerLeaver();
+        $_SESSION["serverID"] = $server_id;
+        $this->assertTrue($serverLeaver->leaveServer());
+
+    }
+
+
+    public function testAcceptFriendRequest()
+    {
+       $friendSQL =  "INSERT INTO discordUser(firstName, lastName, email, phoneNumber, username, password) VALUES('test2', 'test2','test2@gmail.com','01234567892','testing2','test2')";
+       mysqli_query($this->dbConnection->getConnection(), $friendSQL);
+
+        $friendRequestSQL = "INSERT INTO friendRequest(username1, username2) VALUES ('testing2', 'testing')";
+       mysqli_query($this->dbConnection->getConnection(), $friendRequestSQL);
+
+       require_once '../friends/FriendRequestHandler.php';
+       $_SESSION["friendRequestUsername"] = "testing2";
+       $frh = new FriendRequestHandler();
+       $bool = $frh->acceptFriendRequest();
+
+       $del = "DELETE FROM discordUser WHERE username = 'testing2'";
+       mysqli_query($this->dbConnection->getConnection(), $del);
+
+       $this->assertTrue($bool);
+
+    }
+
+    public function testDeclineFriendRequest()
+    {
+        $friendSQL =  "INSERT INTO discordUser(firstName, lastName, email, phoneNumber, username, password) VALUES('test2', 'test2','test2@gmail.com','01234567892','testing2','test2')";
+        mysqli_query($this->dbConnection->getConnection(), $friendSQL);
+
+        $friendRequestSQL = "INSERT INTO friendRequest(username1, username2) VALUES ('testing2', 'testing')";
+        mysqli_query($this->dbConnection->getConnection(), $friendRequestSQL);
+
+        require_once '../friends/FriendRequestHandler.php';
+        $_SESSION["friendRequestUsername"] = "testing2";
+        $frh = new FriendRequestHandler();
+        $bool = $frh->declineFriendRequest();
+
+        $del = "DELETE FROM discordUser WHERE username = 'testing2'";
+        mysqli_query($this->dbConnection->getConnection(), $del);
+
+        $this->assertTrue($bool);
+    }
+
+    public function testCancellingFriendRequest()
+    {
+        $friendSQL =  "INSERT INTO discordUser(firstName, lastName, email, phoneNumber, username, password) VALUES('test2', 'test2','test2@gmail.com','01234567892','testing2','test2')";
+        mysqli_query($this->dbConnection->getConnection(), $friendSQL);
+
+        $friendRequestSQL = "INSERT INTO friendRequest(username1, username2) VALUES ('testing', 'testing2')";
+        mysqli_query($this->dbConnection->getConnection(), $friendRequestSQL);
+
+        require_once '../friends/FriendRequestCanceller.php';
+        $_SESSION["friendRequestUsername"] = "testing2";
+        $frc= new FriendRequestCanceller();
+        $bool = $frc->cancelFriendRequest();
+
+        $del = "DELETE FROM discordUser WHERE username = 'testing2'";
+        mysqli_query($this->dbConnection->getConnection(), $del);
+
+        $this->assertTrue($bool);
+    }
+
+    public function testSendingDirectMessage()
+    {
+        $friendSQL =  "INSERT INTO discordUser(firstName, lastName, email, phoneNumber, username, password) VALUES('test2', 'test2','test2@gmail.com','01234567892','testing2','test2')";
+        mysqli_query($this->dbConnection->getConnection(), $friendSQL);
+
+        $friendSQL = "INSERT INTO friend(username1, username2) VALUES ('testing', 'testing2')";
+        mysqli_query($this->dbConnection->getConnection(), $friendSQL);
+
+        require_once '../directMessage/DirectMessageSender.php';
+
+        $_SESSION["friendUsername"] = "testing2";
+        $_SESSION["directMessage"] = "test";
+        $dms= new DirectMessageSender();
+        $bool = $dms->sendMessage();
+
+        $del = "DELETE FROM discordUser WHERE username = 'testing2'";
+        mysqli_query($this->dbConnection->getConnection(), $del);
+
+        $this->assertTrue($bool);
+    }
+
+    public function testSendingServerMessage()
+    {
+        require_once '../server/ServerCreator.php';
+        $_POST["serverName"] = "newserver";
+        $serverCreator = new ServerCreator();
+        $server_id = $serverCreator::add_server();
+
+        require_once '../server/ServerMessageSender.php';
+
+        $_SESSION["serverID"] = $server_id;
+        $_SESSION["serverMessage"] = "this is a message";
+        $serverMessageSender = new ServerMessageSender();
+
+        $bool = $serverMessageSender->sendMessage();
+        $this->assertTrue($bool);
+
+    }
+
+    
 
 }
 
