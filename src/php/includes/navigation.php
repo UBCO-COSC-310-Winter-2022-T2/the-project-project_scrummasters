@@ -110,18 +110,17 @@ switch ($_SERVER["SCRIPT_NAME"]) {
 <?php $currentPage = basename($_SERVER['PHP_SELF']);
 
 $request_uri = $_SERVER["REQUEST_URI"];
-$substring = "/DiscordClone/src/php";
+$substring = "/php";
 
 $position = strpos($request_uri, $substring);
 
 $result = substr($request_uri, 0, $position + strlen($substring));
 
 
-
 ?>
 <div class="navbar">
     <a class="nav-link" href = "<?php echo $result.'/views/home.php';?>" >Home</a>
-    <a class="nav-link" href = "<?php echo $result.'/views/friends/friends.php' ?>>" >Friends</a>
+    <a class="nav-link" href = "<?php echo $result.'/views/friends/friends.php' ?>" >Friends</a>
     <div class="dropdown">
         <button class="dropbtn">Server v
             <i class="fa fa-caret-down"></i>
