@@ -20,7 +20,7 @@ class DirectMessageSender
     public function sendMessage()
     {
         $sql = "INSERT INTO directMessage(message, sourceUsername, destUsername) VALUES ('$this->directMessage', '$this->senderUsername', '$this->friendUsername')";
-        mysqli_query($this->dbConnection->getConnection(), $sql);
+        return mysqli_query($this->dbConnection->getConnection(), $sql);
     }
 
 

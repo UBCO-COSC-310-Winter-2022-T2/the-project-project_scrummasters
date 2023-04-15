@@ -18,6 +18,6 @@ class ServerLeaver
     public function leaveServer()
     {
         $leaveFromServerSQL = "DELETE FROM userInServer WHERE username = '$this->username' AND serverID = '$this->serverID'";
-        mysqli_query($this->dbConnection->getConnection(), $leaveFromServerSQL);
+        return mysqli_query($this->dbConnection->getConnection(), $leaveFromServerSQL);
     }
 }

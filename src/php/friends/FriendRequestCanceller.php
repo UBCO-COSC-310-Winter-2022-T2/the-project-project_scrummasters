@@ -23,7 +23,7 @@ class FriendRequestCanceller
     public function cancelFriendRequest()
     {
         $sendFriendRequestSQL = "DELETE FROM friendRequest WHERE username1 = '$this->username' AND username2 = '$this->potentialFriendUsername'";
-        mysqli_query($this->dbConnection->getConnection(), $sendFriendRequestSQL);
+        return mysqli_query($this->dbConnection->getConnection(), $sendFriendRequestSQL);
     }
 
 }
