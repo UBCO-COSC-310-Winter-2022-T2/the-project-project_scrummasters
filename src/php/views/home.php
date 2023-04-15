@@ -55,6 +55,7 @@ include("../includes/navigation.php");
     #friends{
         display: flex;
         justify-content: center;
+        border: 4px solid black;
     }
 </style>
 
